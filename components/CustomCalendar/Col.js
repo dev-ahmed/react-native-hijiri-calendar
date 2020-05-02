@@ -2,16 +2,50 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import moment from 'moment-hijri';
 
-const _Col = ({ rowData, currentDay, containerStyle, onPress }) => {
+const _Col = ({
+  rowData,
+  currentDay,
+  containerStyle,
+  onPress,
+  activeMonth,
+  highlightedPeriod,
+  year,
+}) => {
+  const holidayFontColor = '#a00';
+
+  const start = moment(highlightedPeriod.start, 'iYYYY-iM-iD');
+  const end = moment(highlightedPeriod.end, 'iYYYY-iM-iD');
+
+  const handleHighlightedPeriod = (item) => {
+    const isBefore = moment(
+      `${year}-${activeMonth}-${item}`,
+      'iYYYY-iM-iD'
+    ).isSameOrBefore(end);
+    const isAfter = moment(
+      `${year}-${activeMonth}-${item}`,
+      'iYYYY-iM-iD'
+    ).isSameOrAfter(start);
+
+    const style = {};
+
+    if (item !== -1 && isAfter && isBefore) {
+      style.backgroundColor = 'rgba(0,0,0,0.5)';
+    }
+    return style;
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
         return (
-          <View style={styles.row}>
+          <View
+            key={colIndex.toString()}
+            style={[handleHighlightedPeriod(item), styles.col]}
+          >
             <Text
               style={{
-                color: colIndex == 5 ? '#a00' : '#000',
-                fontWeight: item == currentDay ? 'bold' : '',
+                color: colIndex == 5 ? holidayFontColor : '#000',
+                fontWeight: item == currentDay ? 'bold' : 'normal',
                 ...styles.rowText,
               }}
               onPress={onPress}
@@ -38,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'red',
   },
-  row: {
+  col: {
     flex: 1,
     flexDirection: 'row',
     height: '100%',

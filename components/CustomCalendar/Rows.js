@@ -1,15 +1,20 @@
 import React from 'react';
 import moment from 'moment-hijri';
 import { StyleSheet, View } from 'react-native';
-import { getMonthDaysInYear, generateMatrix } from '../../utils';
+import { generateMatrix } from '../../utils';
+import { nDays, weekDays } from '../../constants';
 import { Col } from './Col';
 
-// const weekDays = ['Ah', 'It', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'];
-const weekDays = moment.weekdaysMin();
-const nDays = getMonthDaysInYear();
-
-const _Rows = ({ month, firstDay, currentDay, year, ...rest }) => {
+const _Rows = ({
+  month,
+  firstDay,
+  currentDay,
+  year,
+  highlightedPeriod,
+  ...rest
+}) => {
   const matrix = generateMatrix({ nDays, month, weekDays, firstDay });
+
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();
 
@@ -19,14 +24,17 @@ const _Rows = ({ month, firstDay, currentDay, year, ...rest }) => {
   return (
     <View style={styles.container}>
       {matrix.map((row, rowIndex) => {
-        console.log(row);
         return (
           <Col
             {...rest}
+            key={rowIndex.toString()}
             containerStyle={{ backgroundColor: rowIndex == 0 ? '#ddd' : null }}
             currentDay={isCurrentDay}
             rowData={row}
             index={rowIndex}
+            activeMonth={month}
+            highlightedPeriod={highlightedPeriod}
+            year={year}
           />
         );
       })}

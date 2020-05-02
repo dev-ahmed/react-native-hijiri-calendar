@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Calendar from './components/CustomCalendar';
 
-export default () => {
+export default ({}) => {
   const [month, setMonth] = useState(0);
 
   return (
@@ -11,7 +11,6 @@ export default () => {
         selectedMonth={month}
         onPrev={() => setMonth(month - 1)}
         onNext={() => setMonth(month + 1)}
-        selectedPeriod={[]}
       />
     </View>
   );
@@ -19,7 +18,6 @@ export default () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     top: 200,
     alignSelf: 'center',
     justifyContent: 'center',

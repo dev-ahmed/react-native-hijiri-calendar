@@ -1,4 +1,7 @@
-export const weekDays = ['Ah', 'It', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'];
+import moment from 'moment-hijri';
+import { getMonthDaysInYear } from './utils';
+
+// export const weekDays = ['Ah', 'It', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'];
 
 export const months = [
   'Muharram',
@@ -14,3 +17,6 @@ export const months = [
   'Thul-Qi’dah',
   'Thul-Hijjah',
 ];
+
+export const weekDays = moment.weekdaysMin();
+export const nDays = getMonthDaysInYear();

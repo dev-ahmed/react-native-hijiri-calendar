@@ -48,10 +48,8 @@ export const getDaysInMonth = (year, month) => {
 
 export const getMonthDaysInYear = () => {
   const year = m.iYear();
-  const month = m.iMonth();
-
   let days = [];
-  const nDays = months.map((currentMonth, i) => {
+  months.map((currentMonth, i) => {
     days.push(getDaysInMonth(year, i));
   });
   return days;

@@ -5,7 +5,7 @@ import { monthsShort as months } from '../../utils';
 import { Header } from './Header';
 import { Rows } from './Rows';
 
-const Calendar = ({ selectedMonth, ...rest }) => {
+const Calendar = ({ selectedMonth, selectedPeriod, ...rest }) => {
   const activeDate = moment().add(selectedMonth, 'iMonth');
   const year = activeDate.iYear();
   const month = activeDate.iMonth();
@@ -21,6 +21,7 @@ const Calendar = ({ selectedMonth, ...rest }) => {
     <View style={styles.container}>
       <Header month={months[month]} year={year} {...rest} />
       <Rows
+        highlightedPeriod={{ start: '1441-9-14', end: '1441-10-15' }}
         onPress={_onPress}
         firstDay={firstDay}
         currentDay={currentDay}

@@ -1,27 +1,3 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import Calendar from './components/CustomCalendar';
+import App from './example';
 
-export default ({}) => {
-  const [month, setMonth] = useState(0);
-
-  return (
-    <View style={styles.container}>
-      <Calendar
-        selectedMonth={month}
-        onPrev={() => setMonth(month - 1)}
-        onNext={() => setMonth(month + 1)}
-      />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 340,
-    width: 340,
-  },
-});
+export default App;

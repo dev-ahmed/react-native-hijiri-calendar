@@ -5,7 +5,12 @@ import { monthsShort as months } from '../../constants';
 import { Header } from './Header';
 import { Rows } from './Rows';
 
-const Calendar = ({ selectedMonth, selectedPeriod, ...rest }) => {
+const Calendar = ({
+  selectedMonth,
+  selectedPeriod,
+  containerStyle,
+  ...rest
+}) => {
   const activeDate = moment().add(selectedMonth, 'iMonth');
   const year = activeDate.iYear();
   const month = activeDate.iMonth();
@@ -18,7 +23,7 @@ const Calendar = ({ selectedMonth, selectedPeriod, ...rest }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <Header month={months[month]} year={year} {...rest} />
       <Rows
         highlightedPeriod={selectedPeriod}
@@ -32,7 +37,7 @@ const Calendar = ({ selectedMonth, selectedPeriod, ...rest }) => {
   );
 };
 
-export default Calendar;
+export { Calendar };
 
 const styles = StyleSheet.create({
   container: {

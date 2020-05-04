@@ -1,9 +1,13 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "No description",
   "author": null,
   "main": "node_modules/expo/AppEntry.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-ahmed/react-native-hijiri-calendar"
+  },
   "devDependencies": {
     "babel-preset-expo": "^7.0.0"
   },

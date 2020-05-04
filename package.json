@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "No description",
   "author": null,
   "main": "src/index.js",
@@ -12,15 +12,14 @@
     "babel-preset-expo": "^7.0.0"
   },
   "dependencies": {
-    "@expo/vector-icons": "^10.1.0",
-    "expo": "^37.0.0",
     "moment-hijri": "^2.1.2",
     "react": "16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
-    "react-native-paper": "3.6.0",
-    "react-native-snap-carousel": "^3.9.0"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"
   },
   "comments": {
-    "main": "node_modules/expo/AppEntry.js"
+    "main": "node_modules/expo/AppEntry.js",
+    "dependencies": {
+      "expo": "^37.0.0"
+    }
   }
 }

@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "No description",
   "author": null,
-  "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "devDependencies": {
     "babel-preset-expo": "^7.0.0"

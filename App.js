@@ -18,7 +18,6 @@ export default ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    top: 200,
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

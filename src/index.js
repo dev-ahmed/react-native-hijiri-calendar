@@ -10,11 +10,11 @@ const HCalendar = ({ containerStyle, onPrev, onNext }) => {
       containerStyle={[styles.container, containerStyle]}
       selectedMonth={month}
       onPrev={() => {
-        onPrev();
+        if (onPrev) onPrev();
         setMonth(month - 1);
       }}
       onNext={() => {
-        onNext();
+        if (onNext) onNext();
         setMonth(month + 1);
       }}
     />

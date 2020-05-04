@@ -1,9 +1,9 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "No description",
   "author": null,
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/dev-ahmed/react-native-hijiri-calendar"
@@ -19,5 +19,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-paper": "3.6.0",
     "react-native-snap-carousel": "^3.9.0"
+  },
+  "comments": {
+    "main": "node_modules/expo/AppEntry.js"
   }
 }

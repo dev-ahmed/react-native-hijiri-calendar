@@ -1,8 +1,7 @@
 import React from 'react';
 import moment from 'moment-hijri';
 import { StyleSheet, View } from 'react-native';
-import { generateMatrix } from '../../utils';
-import { nDays, weekDays } from '../../constants';
+import { generateMatrix, generateHighlightedDays } from '../../utils';
 import { Col } from './Col';
 
 const _Rows = ({
@@ -13,7 +12,7 @@ const _Rows = ({
   highlightedPeriod,
   ...rest
 }) => {
-  const matrix = generateMatrix({ nDays, month, weekDays, firstDay });
+  const matrix = generateMatrix({ month, firstDay });
 
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();

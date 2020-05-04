@@ -1,37 +1,8 @@
 import moment from 'moment-hijri';
 import { ummalqura } from './ummalqura';
+import { nDays, weekDays, months } from './constants';
 
 const m = moment();
-
-export const months = [
-  'Muharram',
-  'Safar',
-  "Rabi' al-Awwal",
-  "Rabi' al-Thani",
-  'Jumada al-Ula',
-  'Jumada al-Alkhirah',
-  'Rajab',
-  'Sha’ban',
-  'Ramadhan',
-  'Shawwal',
-  'Thul-Qi’dah',
-  'Thul-Hijjah',
-];
-
-export const monthsShort = [
-  'Muh',
-  'Saf',
-  'Rab-I',
-  'Rab-II',
-  'Jum-I',
-  'Jum-II',
-  'Raj',
-  'Sha',
-  'Ram',
-  'Shw',
-  'Dhu-Q',
-  'Dhu-H',
-];
 
 export function getNewMoonMJDNIndex(hy, hm) {
   var cYears = hy - 1,
@@ -55,7 +26,7 @@ export const getMonthDaysInYear = () => {
   return days;
 };
 
-export const generateMatrix = ({ nDays, month, weekDays, firstDay }) => {
+export const generateMatrix = ({ month, firstDay }) => {
   let matrix = [];
   matrix[0] = weekDays;
   let maxDays = nDays && nDays[month];
@@ -72,6 +43,5 @@ export const generateMatrix = ({ nDays, month, weekDays, firstDay }) => {
       }
     }
   }
-  matrix.pop();
   return matrix;
 };

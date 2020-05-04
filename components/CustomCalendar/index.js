@@ -1,7 +1,7 @@
 import moment from 'moment-hijri';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { monthsShort as months } from '../../utils';
+import { monthsShort as months } from '../../constants';
 import { Header } from './Header';
 import { Rows } from './Rows';
 
@@ -14,14 +14,14 @@ const Calendar = ({ selectedMonth, selectedPeriod, ...rest }) => {
   const firstDay = activeDate.startOf('iMonth').day();
 
   const _onPress = (item) => {
-    console.log(item);
+    // console.log(item);
   };
 
   return (
     <View style={styles.container}>
       <Header month={months[month]} year={year} {...rest} />
       <Rows
-        highlightedPeriod={{ start: '1441-9-14', end: '1441-10-15' }}
+        highlightedPeriod={selectedPeriod}
         onPress={_onPress}
         firstDay={firstDay}
         currentDay={currentDay}

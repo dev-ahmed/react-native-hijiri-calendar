@@ -18,5 +18,20 @@ export const months = [
   'Thul-Hijjah',
 ];
 
+export const monthsShort = [
+  'Muh',
+  'Saf',
+  'Rab-I',
+  'Rab-II',
+  'Jum-I',
+  'Jum-II',
+  'Raj',
+  'Sha',
+  'Ram',
+  'Shw',
+  'Dhu-Q',
+  'Dhu-H',
+];
+
 export const weekDays = moment.weekdaysMin();
 export const nDays = getMonthDaysInYear();

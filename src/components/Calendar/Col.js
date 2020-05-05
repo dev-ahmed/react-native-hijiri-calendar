@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     padding: '4%',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: 'red',
   },
   col: {
     flex: 1,

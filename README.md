@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 |currentDayStyle          |`style`|{}|
 |onPrev          |`Function`| Undefined
 |onNext          |`Function`|Undefined|
+|locale          |`String`|"en"|
 
 
 

@@ -32,6 +32,19 @@ const styles = StyleSheet.create({
 });
 ```
 
+
+|      Prop          |Type                          |default                         |
+|----------------|-------------------------------|-----------------------------|
+|containerStyle|`style`            |{}            |
+|fontStyle          |`style`            |{}            |
+|weekDaysStyle          |`style`|{}|
+|currentDayStyle          |`style`|{}|
+|onPrev          |`Function`| Undefined
+|onNext          |`Function`|Undefined|
+
+
+
+
 ### Contributing
 
 Pull requests are very welcome.

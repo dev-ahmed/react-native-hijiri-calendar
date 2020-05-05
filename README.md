@@ -31,3 +31,8 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
+### Contributing
+
+Pull requests are very welcome 
+

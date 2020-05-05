@@ -1,8 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import moment from 'moment-hijri';
 
-const _Col = ({ rowData, currentDay, containerStyle, onPress }) => {
+const _Col = ({
+  rowData,
+  currentDay,
+  onPress,
+  containerStyle,
+  fontStyle,
+  currentDayStyle,
+}) => {
   const holidayFontColor = '#a00';
 
   return (
@@ -11,11 +17,15 @@ const _Col = ({ rowData, currentDay, containerStyle, onPress }) => {
         return (
           <View key={colIndex.toString()} style={styles.col}>
             <Text
-              style={{
-                color: colIndex == 5 ? holidayFontColor : '#000',
-                fontWeight: item == currentDay ? 'bold' : 'normal',
-                ...styles.rowText,
-              }}
+              style={[
+                {
+                  color: colIndex == 5 ? holidayFontColor : '#000',
+                  fontWeight: item == currentDay ? 'bold' : 'normal',
+                },
+                styles.colText,
+                item == currentDay && currentDayStyle,
+                fontStyle,
+              ]}
               onPress={onPress}
             >
               {item != -1 ? item : null}
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  rowText: {
+  colText: {
     flex: 1,
     padding: 2,
     fontSize: 14,

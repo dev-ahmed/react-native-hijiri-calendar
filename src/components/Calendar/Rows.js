@@ -10,6 +10,9 @@ const _Rows = ({
   currentDay,
   year,
   highlightedPeriod,
+  fontStyle,
+  weekDaysStyle,
+  currentDayStyle,
   ...rest
 }) => {
   const matrix = generateMatrix({ month, firstDay });
@@ -27,13 +30,18 @@ const _Rows = ({
           <Col
             {...rest}
             key={rowIndex.toString()}
-            containerStyle={{ backgroundColor: rowIndex == 0 ? '#ddd' : null }}
+            containerStyle={[
+              { backgroundColor: rowIndex == 0 ? '#ddd' : null },
+              rowIndex == 0 && weekDaysStyle,
+            ]}
             currentDay={isCurrentDay}
             rowData={row}
             index={rowIndex}
             activeMonth={month}
             highlightedPeriod={highlightedPeriod}
             year={year}
+            fontStyle={fontStyle}
+            currentDayStyle={currentDayStyle}
           />
         );
       })}

@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Calendar } from './components/Calendar';
 
-const HCalendar = ({ containerStyle, onPrev, onNext }) => {
+const HCalendar = ({
+  containerStyle,
+  fontStyle,
+  onPrev,
+  onNext,
+  weekDaysStyle,
+  currentDayStyle,
+}) => {
   const [month, setMonth] = useState(0);
 
   return (
     <Calendar
       containerStyle={[styles.container, containerStyle]}
+      weekDaysStyle={weekDaysStyle}
+      fontStyle={fontStyle}
+      currentDayStyle={currentDayStyle}
       selectedMonth={month}
       onPrev={() => {
         if (onPrev) onPrev();

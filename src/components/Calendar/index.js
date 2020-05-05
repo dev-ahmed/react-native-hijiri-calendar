@@ -9,6 +9,9 @@ const Calendar = ({
   selectedMonth,
   selectedPeriod,
   containerStyle,
+  weekDaysStyle,
+  fontStyle,
+  currentDayStyle,
   ...rest
 }) => {
   const activeDate = moment().add(selectedMonth, 'iMonth');
@@ -32,6 +35,9 @@ const Calendar = ({
         currentDay={currentDay}
         month={month}
         year={year}
+        weekDaysStyle={weekDaysStyle}
+        fontStyle={fontStyle}
+        currentDayStyle={currentDayStyle}
       />
     </View>
   );

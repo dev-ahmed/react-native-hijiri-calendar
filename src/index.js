@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Calendar } from './components/Calendar';
+import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {Calendar} from './components/Calendar';
 
 const HCalendar = ({
   containerStyle,
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { HCalendar };
+export {HCalendar};

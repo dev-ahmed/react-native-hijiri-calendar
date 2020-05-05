@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment-hijri';
-import { StyleSheet, View } from 'react-native';
-import { generateMatrix, generateHighlightedDays } from '../../utils';
-import { Col } from './Col';
+import {StyleSheet, View} from 'react-native';
+import {generateMatrix} from '../../utils';
+import {Col} from './Col';
 
 const _Rows = ({
   month,
@@ -15,13 +15,15 @@ const _Rows = ({
   currentDayStyle,
   ...rest
 }) => {
-  const matrix = generateMatrix({ month, firstDay });
+  const matrix = generateMatrix({month, firstDay});
 
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();
 
   const isCurrentDay =
     currentMonth == month && currentYear == year && currentDay;
+
+  const weekDaysBackground = {backgroundColor: '#ddd'};
 
   return (
     <View style={styles.container}>
@@ -31,7 +33,7 @@ const _Rows = ({
             {...rest}
             key={rowIndex.toString()}
             containerStyle={[
-              { backgroundColor: rowIndex == 0 ? '#ddd' : null },
+              rowIndex == 0 && weekDaysBackground,
               rowIndex == 0 && weekDaysStyle,
             ]}
             currentDay={isCurrentDay}
@@ -48,8 +50,6 @@ const _Rows = ({
     </View>
   );
 };
-
-_Rows.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {

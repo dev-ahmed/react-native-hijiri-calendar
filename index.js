@@ -1,1 +1,1 @@
-export { HCalendar } from './src/';
+export {HCalendar} from './src/';

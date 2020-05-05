@@ -1,6 +1,6 @@
 import moment from 'moment-hijri';
-import { ummalqura } from './ummalqura';
-import { nDays, weekDays, months } from './constants';
+import {ummalqura} from './ummalqura';
+import {nDays, weekDays, months} from './constants';
 
 const m = moment();
 
@@ -26,7 +26,7 @@ export const getMonthDaysInYear = () => {
   return days;
 };
 
-export const generateMatrix = ({ month, firstDay }) => {
+export const generateMatrix = ({month, firstDay}) => {
   let matrix = [];
   matrix[0] = weekDays;
   let maxDays = nDays && nDays[month];

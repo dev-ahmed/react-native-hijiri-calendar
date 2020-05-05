@@ -1,9 +1,9 @@
 import moment from 'moment-hijri';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { monthsShort as months } from '../../constants';
-import { Header } from './Header';
-import { Rows } from './Rows';
+import {StyleSheet, View} from 'react-native';
+import {monthsShort as months} from '../../constants';
+import {Header} from './Header';
+import {Rows} from './Rows';
 
 const Calendar = ({
   selectedMonth,
@@ -21,9 +21,9 @@ const Calendar = ({
   const currentDay = activeDate.iDate();
   const firstDay = activeDate.startOf('iMonth').day();
 
-  const _onPress = (item) => {
-    // console.log(item);
-  };
+  // const _onPress = (item) => {
+  //   // console.log(item);
+  // };
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -43,7 +43,7 @@ const Calendar = ({
   );
 };
 
-export { Calendar };
+export {Calendar};
 
 const styles = StyleSheet.create({
   container: {

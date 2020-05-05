@@ -1,13 +1,13 @@
-import { MaterialIcons } from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-const _Header = ({ month, year, onNext, onPrev }) => {
+const _Header = ({month, year, onNext, onPrev}) => {
   return (
     <>
       <View style={styles.yearMonth}>
         <MaterialIcons
-          style={{ transform: [{ rotate: '180deg' }] }}
+          style={{transform: [{rotate: '180deg'}]}}
           size={32}
           color="white"
           name="navigate-next"

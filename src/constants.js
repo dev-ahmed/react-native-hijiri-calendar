@@ -1,5 +1,5 @@
 import moment from 'moment-hijri';
-import { getMonthDaysInYear } from './utils';
+import {getMonthDaysInYear} from './utils';
 
 // export const weekDays = ['Ah', 'It', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'];
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
+import {View, Text, StyleSheet} from 'react-native';
 const _Col = ({
   rowData,
   currentDay,
@@ -11,6 +10,16 @@ const _Col = ({
 }) => {
   const holidayFontColor = '#a00';
 
+  const handleColColor = (colIndex) => {
+    return {color: colIndex == 5 ? holidayFontColor : '#000'};
+  };
+
+  const handleCurrentDayStyle = (item) => {
+    return {
+      fontWeight: item == currentDay ? 'bold' : 'normal',
+    };
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
@@ -18,16 +27,13 @@ const _Col = ({
           <View key={colIndex.toString()} style={styles.col}>
             <Text
               style={[
-                {
-                  color: colIndex == 5 ? holidayFontColor : '#000',
-                  fontWeight: item == currentDay ? 'bold' : 'normal',
-                },
+                handleColColor(colIndex),
+                handleCurrentDayStyle(item),
                 styles.colText,
                 item == currentDay && currentDayStyle,
                 fontStyle,
               ]}
-              onPress={onPress}
-            >
+              onPress={onPress}>
               {item != -1 ? item : null}
             </Text>
           </View>
@@ -36,8 +42,6 @@ const _Col = ({
     </View>
   );
 };
-
-_Col.propTypes = {};
 
 export const Col = React.memo(_Col);
 

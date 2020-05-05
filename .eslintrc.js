@@ -1,0 +1,45 @@
+module.exports = {
+  parser: 'babel-eslint',
+  plugins: ['import', 'react', 'react-native', 'react-hooks'],
+  extends: ['plugin:react/recommended'],
+  parserOptions: {
+    ecmaVersion: 7,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  rules: {
+    'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
+    'comma-spacing': 'warn',
+    'import/no-unresolved': 0,
+    'dot-notation': 'warn',
+    'react/sort-comp': 1,
+    semi: 2,
+    'react/forbid-prop-types': 0,
+    'no-restricted-syntax': 0,
+    'react/no-array-index-key': 2,
+    'react-hooks/rules-of-hooks': 1,
+    'react-hooks/exhaustive-deps': 0,
+    'react/prop-types': 0,
+    'arrow-body-style': [0, 'as-needed'],
+    'react-native/no-inline-styles': 2,
+    'no-unused-vars': 2,
+    'import/no-unused-modules': 1,
+    'react/display-name': 0,
+  },
+  globals: {
+    window: true,
+    document: true,
+    localStorage: true,
+    FormData: true,
+    FileReader: true,
+    Blob: true,
+    navigator: true,
+  },
+};

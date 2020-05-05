@@ -3,8 +3,8 @@
 ```
 $ npm install --save react-native-calendars
 ```
-no native module linking is required.
 
+no native module linking is required.
 
 ### Usage
 
@@ -34,5 +34,4 @@ const styles = StyleSheet.create({
 
 ### Contributing
 
-Pull requests are very welcome 
-
+Pull requests are very welcome.

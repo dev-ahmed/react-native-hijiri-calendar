@@ -12,8 +12,11 @@ const Calendar = ({
   weekDaysStyle,
   fontStyle,
   currentDayStyle,
+  locale = 'en',
+  onDaySelect,
   ...rest
 }) => {
+  moment.locale(locale);
   const activeDate = moment().add(selectedMonth, 'iMonth');
   const year = activeDate.iYear();
   const month = activeDate.iMonth();
@@ -21,9 +24,10 @@ const Calendar = ({
   const currentDay = activeDate.iDate();
   const firstDay = activeDate.startOf('iMonth').day();
 
-  // const _onPress = (item) => {
-  //   // console.log(item);
-  // };
+  const _onPress = (item) => {
+    // console.log(item);
+    if (onDaySelect) onDaySelect(item);
+  };
 
   return (
     <View style={[styles.container, containerStyle]}>

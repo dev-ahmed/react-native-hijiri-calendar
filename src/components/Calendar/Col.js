@@ -24,7 +24,6 @@ const _Col = ({
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
-        console.log(item, colIndex);
         return (
           <View key={colIndex.toString()} style={styles.col}>
             <Text

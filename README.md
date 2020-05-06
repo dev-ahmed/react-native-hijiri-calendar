@@ -39,10 +39,11 @@ const styles = StyleSheet.create({
 |fontStyle          |`style`            |{}            |
 |weekDaysStyle          |`style`|{}|
 |currentDayStyle          |`style`|{}|
+|headerStyle          |`style`|{}|
+|dayNameFontStyle          |`style`|{}|
 |onPrev          |`Function`| Undefined
 |onNext          |`Function`|Undefined|
 |locale          |`String`|"en"|
-
 
 
 

@@ -4642,9 +4642,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-hijiri-calendar@../react-native-hijiri-calendar-1.1.1.tgz:
-  version "1.1.1"
-  resolved "../react-native-hijiri-calendar-1.1.1.tgz#22cc0cf95c3fa14a2dffbed06c5cdf3a43415e78"
+react-native-hijiri-calendar@latest:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-hijiri-calendar/-/react-native-hijiri-calendar-1.1.3.tgz#b050a0da7bf08d48054c9eb8c1e32c2f4c7e5429"
+  integrity sha512-BURsiPI5nefKBrUNNWz+/wn/5aJAQAp0NuQwlyEsh7GW6iRHRZ95jY14oIfNhe3sbC9PbCGB5rbjaPohvCF0aQ==
   dependencies:
     moment-hijri "^2.1.2"
     react "16.9.0"

@@ -13,9 +13,11 @@ const _Rows = ({
   fontStyle,
   weekDaysStyle,
   currentDayStyle,
+  dayNameFontStyle,
   ...rest
 }) => {
   const matrix = generateMatrix({month, firstDay});
+  // generateHighlighted();
 
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();
@@ -23,7 +25,7 @@ const _Rows = ({
   const isCurrentDay =
     currentMonth == month && currentYear == year && currentDay;
 
-  const weekDaysBackground = {backgroundColor: '#ddd'};
+  const weekDaysBackground = {backgroundColor: '#bcced6'};
 
   return (
     <View style={styles.container}>
@@ -44,6 +46,7 @@ const _Rows = ({
             year={year}
             fontStyle={fontStyle}
             currentDayStyle={currentDayStyle}
+            dayNameFontStyle={dayNameFontStyle}
           />
         );
       })}

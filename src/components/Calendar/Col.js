@@ -7,6 +7,7 @@ const _Col = ({
   containerStyle,
   fontStyle,
   currentDayStyle,
+  dayNameFontStyle,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -23,6 +24,7 @@ const _Col = ({
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
+        console.log(item, colIndex);
         return (
           <View key={colIndex.toString()} style={styles.col}>
             <Text
@@ -31,6 +33,7 @@ const _Col = ({
                 handleCurrentDayStyle(item),
                 styles.colText,
                 item == currentDay && currentDayStyle,
+                isNaN(item) && {...styles.dayName, dayNameFontStyle},
                 fontStyle,
               ]}
               onPress={onPress}>
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: -1,
     flexDirection: 'row',
-    padding: '4%',
+    paddingVertical: '1%',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
@@ -67,4 +70,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
   },
+  dayName: {},
 });

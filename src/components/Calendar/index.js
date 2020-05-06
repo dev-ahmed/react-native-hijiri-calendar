@@ -14,6 +14,8 @@ const Calendar = ({
   currentDayStyle,
   locale = 'en',
   onDaySelect,
+  headerStyle,
+  dayNameFontStyle,
   ...rest
 }) => {
   moment.locale(locale);
@@ -25,13 +27,17 @@ const Calendar = ({
   const firstDay = activeDate.startOf('iMonth').day();
 
   const _onPress = (item) => {
-    // console.log(item);
     if (onDaySelect) onDaySelect(item);
   };
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <Header month={months[month]} year={year} {...rest} />
+      <Header
+        headerStyle={headerStyle}
+        month={months[month]}
+        year={year}
+        {...rest}
+      />
       <Rows
         highlightedPeriod={selectedPeriod}
         onPress={_onPress}
@@ -42,6 +48,7 @@ const Calendar = ({
         weekDaysStyle={weekDaysStyle}
         fontStyle={fontStyle}
         currentDayStyle={currentDayStyle}
+        dayNameFontStyle={dayNameFontStyle}
       />
     </View>
   );

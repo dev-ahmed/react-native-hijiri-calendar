@@ -2,10 +2,10 @@ import {MaterialIcons} from '@expo/vector-icons';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const _Header = ({month, year, onNext, onPrev}) => {
+const _Header = ({month, year, headerStyle, onNext, onPrev}) => {
   return (
     <>
-      <View style={styles.yearMonth}>
+      <View style={[styles.yearMonth, headerStyle]}>
         <MaterialIcons
           style={{transform: [{rotate: '180deg'}]}}
           size={32}
@@ -27,8 +27,6 @@ const _Header = ({month, year, onNext, onPrev}) => {
   );
 };
 
-_Header.propTypes = {};
-
 export const Header = React.memo(_Header);
 
 const styles = StyleSheet.create({
@@ -40,11 +38,11 @@ const styles = StyleSheet.create({
   },
   yearMonth: {
     paddingVertical: 10,
-    backgroundColor: 'rgb(0, 92, 185)',
+    backgroundColor: '#79afc1',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    borderColor: 'rgba(0, 0, 0, 0)',
+    borderColor: '#dbeede',
   },
   yearMonthText: {
     fontSize: 25,

@@ -5,7 +5,7 @@ import {nDays, weekDays, months} from './constants';
 const m = moment();
 
 export function getNewMoonMJDNIndex(hy, hm) {
-  let cYears = hy - 1,
+  var cYears = hy - 1,
     totalMonths = cYears * 12 + 1 + (hm - 1),
     i = totalMonths - 16260;
   return i;
@@ -44,4 +44,27 @@ export const generateMatrix = ({month, firstDay}) => {
     }
   }
   return matrix;
+};
+
+export const generateSelectedDatesMatrix = ({
+  monthMatrix,
+  startDate,
+  endDate,
+}) => {
+  let matrix = [];
+
+  for (let rowIndex = 0; rowIndex < monthMatrix.length; rowIndex++) {
+    const row = monthMatrix[rowIndex];
+    for (let colIndex = 0; colIndex < row.length; colIndex++) {
+      const col = row[colIndex];
+      if (col >= startDate && col <= endDate) {
+        matrix.push(col);
+      }
+    }
+  }
+  return matrix;
+};
+
+export const castHijiriDate = (date) => {
+  return moment(date, 'iYYYY/iM/iD');
 };

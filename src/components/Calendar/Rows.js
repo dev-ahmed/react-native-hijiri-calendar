@@ -1,7 +1,11 @@
 import React from 'react';
 import moment from 'moment-hijri';
 import {StyleSheet, View} from 'react-native';
-import {generateMatrix} from '../../utils';
+import {
+  generateMatrix,
+  generateSelectedDatesMatrix,
+  castHijiriDate,
+} from '../../utils';
 import {Col} from './Col';
 
 const _Rows = ({
@@ -9,18 +13,36 @@ const _Rows = ({
   firstDay,
   currentDay,
   year,
-  highlightedPeriod,
   fontStyle,
   weekDaysStyle,
   currentDayStyle,
   dayNameFontStyle,
+  selectedDates,
   ...rest
 }) => {
   const matrix = generateMatrix({month, firstDay});
-  // generateHighlighted();
-
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();
+
+  const markedDates =
+    selectedDates &&
+    selectedDates.map((item) => {
+      const startingDay = castHijiriDate(item.from).iDate();
+      const endingDay = castHijiriDate(item.to).iDate();
+
+      return {
+        selectedDays: generateSelectedDatesMatrix({
+          startDate: startingDay,
+          endDate: endingDay,
+          monthMatrix: matrix,
+        }),
+        months: [
+          castHijiriDate(item.from).iMonth(),
+          castHijiriDate(item.to).iMonth(),
+        ],
+        style: item.style,
+      };
+    });
 
   const isCurrentDay =
     currentMonth == month && currentYear == year && currentDay;
@@ -42,11 +64,11 @@ const _Rows = ({
             rowData={row}
             index={rowIndex}
             activeMonth={month}
-            highlightedPeriod={highlightedPeriod}
             year={year}
             fontStyle={fontStyle}
             currentDayStyle={currentDayStyle}
             dayNameFontStyle={dayNameFontStyle}
+            markedDays={markedDates}
           />
         );
       })}
@@ -56,7 +78,8 @@ const _Rows = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: -1,
+    height: '90%',
+    justifyContent: 'space-between',
   },
 });
 

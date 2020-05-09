@@ -8,6 +8,8 @@ const _Col = ({
   fontStyle,
   currentDayStyle,
   dayNameFontStyle,
+  markedDays,
+  activeMonth,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -21,11 +23,29 @@ const _Col = ({
     };
   };
 
+  const handleMarkedDays = (markedDay, item) => {
+    if (item >= 1) {
+      const {selectedDays, months, style} = markedDay;
+      if (months.includes(activeMonth) && selectedDays.includes(item)) {
+        const firstItem = selectedDays[0] == item && styles.leftRadius;
+        const lastItem =
+          selectedDays[selectedDays.length - 1] == item && styles.rightRadius;
+
+        return {
+          ...firstItem,
+          ...lastItem,
+          ...styles.highlightStyle,
+          ...style,
+        };
+      }
+    }
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
         return (
-          <View key={colIndex.toString()} style={styles.col}>
+          <View key={colIndex.toString()} style={[styles.col]}>
             <Text
               style={[
                 handleColColor(colIndex),
@@ -38,6 +58,15 @@ const _Col = ({
               onPress={onPress}>
               {item != -1 ? item : null}
             </Text>
+            {markedDays &&
+              markedDays.map((markedDay, index) => {
+                return (
+                  <View
+                    key={index.toString()}
+                    style={handleMarkedDays(markedDay, item)}
+                  />
+                );
+              })}
           </View>
         );
       })}
@@ -49,25 +78,40 @@ export const Col = React.memo(_Col);
 
 const styles = StyleSheet.create({
   container: {
-    flex: -1,
+    height: '10%',
     flexDirection: 'row',
-    paddingVertical: '1%',
+    paddingVertical: '2%',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
   col: {
-    flex: 1,
-    flexDirection: 'row',
-    height: '100%',
-    width: '100%',
-    justifyContent: 'center',
+    width: '10%',
+    padding: '2%',
     alignItems: 'center',
   },
   colText: {
     flex: 1,
-    padding: 2,
+    padding: '1%',
     fontSize: 14,
     textAlign: 'center',
   },
-  dayName: {},
+  highlightStyle: {
+    top: 2,
+    height: 27,
+    width: 50,
+    position: 'absolute',
+    // borderColor: 'green',
+    borderTopWidth: 4,
+    borderBottomWidth: 4,
+  },
+  leftRadius: {
+    borderStartWidth: 4,
+    borderTopLeftRadius: 15,
+    borderBottomLeftRadius: 15,
+  },
+  rightRadius: {
+    borderEndWidth: 4,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+  },
 });

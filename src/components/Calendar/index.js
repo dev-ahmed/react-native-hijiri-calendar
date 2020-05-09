@@ -16,6 +16,7 @@ const Calendar = ({
   onDaySelect,
   headerStyle,
   dayNameFontStyle,
+  selectedDates,
   ...rest
 }) => {
   moment.locale(locale);
@@ -49,6 +50,7 @@ const Calendar = ({
         fontStyle={fontStyle}
         currentDayStyle={currentDayStyle}
         dayNameFontStyle={dayNameFontStyle}
+        selectedDates={selectedDates}
       />
     </View>
   );
@@ -59,13 +61,11 @@ export {Calendar};
 const styles = StyleSheet.create({
   container: {
     height: '100%',
-    width: '100%',
     overflow: 'hidden',
     borderRadius: 15,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0)',
-    justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0, 0.05)',
   },
 });

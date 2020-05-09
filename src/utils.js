@@ -5,7 +5,7 @@ import {nDays, weekDays, months} from './constants';
 const m = moment();
 
 export function getNewMoonMJDNIndex(hy, hm) {
-  var cYears = hy - 1,
+  let cYears = hy - 1,
     totalMonths = cYears * 12 + 1 + (hm - 1),
     i = totalMonths - 16260;
   return i;

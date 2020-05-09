@@ -7,7 +7,6 @@ import {Rows} from './Rows';
 
 const Calendar = ({
   selectedMonth,
-  selectedPeriod,
   containerStyle,
   weekDaysStyle,
   fontStyle,
@@ -40,7 +39,6 @@ const Calendar = ({
         {...rest}
       />
       <Rows
-        highlightedPeriod={selectedPeriod}
         onPress={_onPress}
         firstDay={firstDay}
         currentDay={currentDay}

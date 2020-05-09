@@ -9,11 +9,16 @@ const HCalendar = ({
   onNext,
   weekDaysStyle,
   currentDayStyle,
+  headerStyle,
+  dayNameFontStyle,
+  selectedDates,
 }) => {
   const [month, setMonth] = useState(0);
 
   return (
     <Calendar
+      headerStyle={headerStyle}
+      dayNameFontStyle={dayNameFontStyle}
       containerStyle={[styles.container, containerStyle]}
       weekDaysStyle={weekDaysStyle}
       fontStyle={fontStyle}
@@ -27,14 +32,16 @@ const HCalendar = ({
         if (onNext) onNext();
         setMonth(month + 1);
       }}
+      selectedDates={selectedDates}
     />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: 350,
     height: 300,
-    minWidth: 350,
+    alignSelf: 'center',
   },
 });
 

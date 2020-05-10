@@ -6,6 +6,8 @@ $ npm install --save react-native-calendars
 
 no native module linking is required.
 
+[Expo Link](https://snack.expo.io/@dev-ahmed/hcalender-example)
+
 ### Usage
 
 ```javascript

@@ -1,12 +1,14 @@
 import moment from 'moment-hijri';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {monthsShort as months} from '../../constants';
+import {hMonthsShort, gMonthsShort} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
+import {getYear, getMonth, getDay, isHijiri} from '../../utils';
 
 const Calendar = ({
   selectedMonth,
+  selectedPeriod,
   containerStyle,
   weekDaysStyle,
   fontStyle,
@@ -16,19 +18,25 @@ const Calendar = ({
   headerStyle,
   dayNameFontStyle,
   selectedDates,
+  calendarType,
+  iconPrev,
+  iconNext,
+  markedDatesTextStyle,
   ...rest
 }) => {
   moment.locale(locale);
-  const activeDate = moment().add(selectedMonth, 'iMonth');
-  const year = activeDate.iYear();
-  const month = activeDate.iMonth();
+  const activeDate = moment().add(selectedMonth, isHijiri ? 'iMonth' : 'month');
+  const year = getYear(activeDate, calendarType);
+  const month = getMonth(activeDate, calendarType);
 
-  const currentDay = activeDate.iDate();
-  const firstDay = activeDate.startOf('iMonth').day();
+  const currentDay = getDay(activeDate, calendarType);
+  const firstDay = activeDate.startOf(isHijiri ? 'iMonth' : 'month').day();
 
   const _onPress = (item) => {
     if (onDaySelect) onDaySelect(item);
   };
+
+  const months = isHijiri(calendarType) ? hMonthsShort : gMonthsShort;
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -37,8 +45,11 @@ const Calendar = ({
         month={months[month]}
         year={year}
         {...rest}
+        iconNext={iconNext}
+        iconPrev={iconPrev}
       />
       <Rows
+        highlightedPeriod={selectedPeriod}
         onPress={_onPress}
         firstDay={firstDay}
         currentDay={currentDay}
@@ -49,6 +60,7 @@ const Calendar = ({
         currentDayStyle={currentDayStyle}
         dayNameFontStyle={dayNameFontStyle}
         selectedDates={selectedDates}
+        markedDatesTextStyle={markedDatesTextStyle}
       />
     </View>
   );
@@ -58,7 +70,6 @@ export {Calendar};
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
     overflow: 'hidden',
     borderRadius: 15,
     borderStyle: 'solid',

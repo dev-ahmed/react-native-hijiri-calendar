@@ -3,13 +3,13 @@ import {View, Text, StyleSheet} from 'react-native';
 const _Col = ({
   rowData,
   currentDay,
-  onPress,
   containerStyle,
   fontStyle,
   currentDayStyle,
   dayNameFontStyle,
   markedDays,
   activeMonth,
+  markedDatesTextStyle,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -41,21 +41,34 @@ const _Col = ({
     }
   };
 
+  const handleMarkedDaysText = (markedDays, item) => {
+    if (item >= 1) {
+      markedDays.map((markedDay) => {
+        const {selectedDays, months} = markedDay;
+        if (months.includes(activeMonth) && selectedDays.includes(item)) {
+          return markedDatesTextStyle;
+        }
+      });
+    }
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
         return (
-          <View key={colIndex.toString()} style={[styles.col]}>
+          <View
+            key={colIndex.toString()}
+            style={[styles.col, isNaN(item) && styles.daysCol]}>
             <Text
               style={[
                 handleColColor(colIndex),
                 handleCurrentDayStyle(item),
                 styles.colText,
                 item == currentDay && currentDayStyle,
-                isNaN(item) && {...styles.dayName, dayNameFontStyle},
                 fontStyle,
-              ]}
-              onPress={onPress}>
+                isNaN(item) && {...styles.dayName, ...dayNameFontStyle},
+                handleMarkedDaysText(markedDays, item),
+              ]}>
               {item != -1 ? item : null}
             </Text>
             {markedDays &&
@@ -78,7 +91,7 @@ export const Col = React.memo(_Col);
 
 const styles = StyleSheet.create({
   container: {
-    height: '10%',
+    minHeight: '10%',
     flexDirection: 'row',
     paddingVertical: '2%',
     justifyContent: 'space-around',
@@ -86,8 +99,11 @@ const styles = StyleSheet.create({
   },
   col: {
     width: '10%',
-    padding: '2%',
+    paddingVertical: '2%',
     alignItems: 'center',
+  },
+  daysCol: {
+    // marginVertical: 3,
   },
   colText: {
     flex: 1,
@@ -100,9 +116,10 @@ const styles = StyleSheet.create({
     height: 27,
     width: 50,
     position: 'absolute',
-    // borderColor: 'green',
+    borderColor: '#ff6a00',
     borderTopWidth: 4,
     borderBottomWidth: 4,
+    zIndex: -1,
   },
   leftRadius: {
     borderStartWidth: 4,
@@ -113,5 +130,10 @@ const styles = StyleSheet.create({
     borderEndWidth: 4,
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
+  },
+  dayName: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    paddingVertical: 5,
   },
 });

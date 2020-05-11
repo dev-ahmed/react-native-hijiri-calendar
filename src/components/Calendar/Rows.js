@@ -18,9 +18,11 @@ const _Rows = ({
   currentDayStyle,
   dayNameFontStyle,
   selectedDates,
+  calendarType,
+  markedDatesTextStyle,
   ...rest
 }) => {
-  const matrix = generateMatrix({month, firstDay});
+  const matrix = generateMatrix({month, firstDay, year, calendarType});
   const currentMonth = moment().iMonth();
   const currentYear = moment().iYear();
 
@@ -69,6 +71,7 @@ const _Rows = ({
             currentDayStyle={currentDayStyle}
             dayNameFontStyle={dayNameFontStyle}
             markedDays={markedDates}
+            markedDatesTextStyle={markedDatesTextStyle}
           />
         );
       })}
@@ -78,8 +81,9 @@ const _Rows = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: '90%',
+    flex: 1,
     justifyContent: 'space-between',
+    marginBottom: 10,
   },
 });
 

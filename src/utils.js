@@ -1,11 +1,17 @@
 import moment from 'moment-hijri';
 import {ummalqura} from './ummalqura';
-import {nDays, weekDays, months} from './constants';
+import {
+  weekDays,
+  calendarTypes,
+  hMonthsShort,
+  gNDays,
+  hNDays,
+} from './constants';
 
 const m = moment();
 
 export function getNewMoonMJDNIndex(hy, hm) {
-  let cYears = hy - 1,
+  var cYears = hy - 1,
     totalMonths = cYears * 12 + 1 + (hm - 1),
     i = totalMonths - 16260;
   return i;
@@ -17,20 +23,34 @@ export const getDaysInMonth = (year, month) => {
   return daysInMonth;
 };
 
-export const getMonthDaysInYear = () => {
+export const getHMonthDaysInYear = () => {
   const year = m.iYear();
   let days = [];
-  months.map((currentMonth, i) => {
+  hMonthsShort.map((currentMonth, i) => {
     days.push(getDaysInMonth(year, i));
   });
   return days;
 };
 
-export const generateMatrix = ({month, firstDay}) => {
+export const handleFebruaryMaxDays = (month, year) => {
+  let nDays = gNDays;
+  if (gNDays[month] == 1) {
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+      nDays[month] += 1;
+    }
+  }
+  return nDays;
+};
+
+export const generateMatrix = ({month, firstDay, calendarType, year}) => {
   let matrix = [];
   matrix[0] = weekDays;
-  let maxDays = nDays && nDays[month];
 
+  const nDays = isHijiri(calendarType)
+    ? hNDays
+    : handleFebruaryMaxDays(month, year);
+
+  let maxDays = nDays && nDays[month];
   let counter = 1;
   for (let row = 1; row < 7; row++) {
     matrix[row] = [];
@@ -67,4 +87,20 @@ export const generateSelectedDatesMatrix = ({
 
 export const castHijiriDate = (date) => {
   return moment(date, 'iYYYY/iM/iD');
+};
+
+export const getDay = (date, type = calendarTypes.hijiri) => {
+  return isHijiri(type) ? moment(date).iDate() : moment(date).date();
+};
+
+export const getMonth = (date, type) => {
+  return isHijiri(type) ? moment(date).iMonth() : moment(date).month();
+};
+
+export const getYear = (date, type) => {
+  return isHijiri(type) ? moment(date).iYear() : moment(date).year();
+};
+
+export const isHijiri = (type) => {
+  return type == calendarTypes.hijiri;
 };

@@ -2,26 +2,42 @@ import {MaterialIcons} from '@expo/vector-icons';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const _Header = ({month, year, headerStyle, onNext, onPrev}) => {
+const _Header = ({
+  month,
+  year,
+  headerStyle,
+  onNext,
+  onPrev,
+  iconNext,
+  iconPrev,
+}) => {
   return (
     <>
       <View style={[styles.yearMonth, headerStyle]}>
-        <MaterialIcons
-          style={{transform: [{rotate: '180deg'}]}}
-          size={32}
-          color="white"
-          name="navigate-next"
-          onPress={onPrev}
-        />
+        {iconNext ? (
+          iconNext
+        ) : (
+          <MaterialIcons
+            style={{transform: [{rotate: '180deg'}]}}
+            size={32}
+            color="white"
+            name="navigate-next"
+            onPress={onPrev}
+          />
+        )}
         <Text style={styles.yearMonthText}>
           {month} {year}
         </Text>
-        <MaterialIcons
-          onPress={onNext}
-          color="white"
-          size={32}
-          name="navigate-next"
-        />
+        {iconPrev ? (
+          iconPrev
+        ) : (
+          <MaterialIcons
+            onPress={onNext}
+            color="white"
+            size={32}
+            name="navigate-next"
+          />
+        )}
       </View>
     </>
   );

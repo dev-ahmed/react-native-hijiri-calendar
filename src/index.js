@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {Calendar} from './components/Calendar';
+import {calendarTypes} from './constants';
 
 const HCalendar = ({
   containerStyle,
@@ -12,6 +13,11 @@ const HCalendar = ({
   headerStyle,
   dayNameFontStyle,
   selectedDates,
+  onDaySelect,
+  calendarType = calendarTypes.hijiri,
+  iconNext,
+  iconPrev,
+  markedDatesTextStyle,
 }) => {
   const [month, setMonth] = useState(0);
 
@@ -33,6 +39,12 @@ const HCalendar = ({
         setMonth(month + 1);
       }}
       selectedDates={selectedDates}
+      onDaySelect={onDaySelect}
+      iconPrev={iconPrev}
+      iconNext={iconNext}
+      markedDatesTextStyle={markedDatesTextStyle}
+      calendarType={calendarType}
+      //gregorian / hijiri
     />
   );
 };

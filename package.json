@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "No description",
   "author": "Ahmed Nabil",
   "main": "src/index.js",
@@ -29,7 +29,7 @@
     "moment-hijri": "^2.1.2",
     "react": ">=15.0.0",
     "react-native": "*",
-    "@expo/vector-icons": "^10.2.0"
+    "expo": "~37.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",

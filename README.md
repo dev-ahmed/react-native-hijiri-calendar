@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
 | iconNext             | `Element`  |           |
 | iconPrev             | `Element`  |           |
 | markedDatesTextStyle | `Style`    | {}        |
+| calendarType         | `String`   | 'hijiri'  |
 
 ### Contributing
 

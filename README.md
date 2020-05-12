@@ -1,7 +1,7 @@
 ### Installation
 
 ```
-$ npm install --save react-native-calendars
+$ npm install --save react-native-hijiri-calendar
 ```
 
 no native module linking is required.

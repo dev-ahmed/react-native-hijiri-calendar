@@ -42,7 +42,7 @@ const _Col = ({
   };
 
   const handleMarkedDaysText = (markedDays, item) => {
-    if (item >= 1) {
+    if (Array.isArray(markedDays) && item >= 1) {
       markedDays.map((markedDay) => {
         const {selectedDays, months} = markedDay;
         if (months.includes(activeMonth) && selectedDays.includes(item)) {
@@ -71,7 +71,7 @@ const _Col = ({
               ]}>
               {item != -1 ? item : null}
             </Text>
-            {markedDays &&
+            {Array.isArray(markedDays) &&
               markedDays.map((markedDay, index) => {
                 return (
                   <View

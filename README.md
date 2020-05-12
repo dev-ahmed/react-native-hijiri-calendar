@@ -1,10 +1,9 @@
 ### Installation
 
 ```
-$ npm install --save react-native-hijiri-calendar
+$ yarn add react-native-vector-icons
+$ yarn add react-native-hijiri-calendar
 ```
-
-no native module linking is required.
 
 [Expo Link](https://snack.expo.io/@dev-ahmed/hcalender-example)
 

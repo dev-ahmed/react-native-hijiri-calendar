@@ -33,7 +33,8 @@ const Calendar = ({
   const firstDay = activeDate.startOf(isHijiri ? 'iMonth' : 'month').day();
 
   const _onPress = (item) => {
-    if (onDaySelect) onDaySelect(item);
+    console.log(item);
+    if (onDaySelect && item >= 1) onDaySelect(item);
   };
 
   const months = isHijiri(calendarType) ? hMonthsShort : gMonthsShort;

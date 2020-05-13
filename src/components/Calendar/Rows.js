@@ -20,7 +20,7 @@ const _Rows = ({
   selectedDates,
   calendarType,
   markedDatesTextStyle,
-  ...rest
+  onPress,
 }) => {
   const matrix = generateMatrix({month, firstDay, year, calendarType});
   const currentMonth = moment().iMonth();
@@ -56,7 +56,7 @@ const _Rows = ({
       {matrix.map((row, rowIndex) => {
         return (
           <Col
-            {...rest}
+            onPress={onPress}
             key={rowIndex.toString()}
             containerStyle={[
               rowIndex == 0 && weekDaysBackground,

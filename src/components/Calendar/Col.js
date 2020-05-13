@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 const _Col = ({
   rowData,
   currentDay,
@@ -10,6 +10,7 @@ const _Col = ({
   markedDays,
   activeMonth,
   markedDatesTextStyle,
+  onPress,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -56,7 +57,8 @@ const _Col = ({
     <View style={[styles.container, containerStyle]}>
       {rowData.map((item, colIndex) => {
         return (
-          <View
+          <TouchableOpacity
+            onPress={() => onPress(item)}
             key={colIndex.toString()}
             style={[styles.col, isNaN(item) && styles.daysCol]}>
             <Text
@@ -80,7 +82,7 @@ const _Col = ({
                   />
                 );
               })}
-          </View>
+          </TouchableOpacity>
         );
       })}
     </View>

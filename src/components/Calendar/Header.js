@@ -6,6 +6,7 @@ const _Header = ({
   month,
   year,
   headerStyle,
+  headerFontStyle,
   onNext,
   onPrev,
   iconNext,
@@ -25,7 +26,7 @@ const _Header = ({
             onPress={onPrev}
           />
         )}
-        <Text style={styles.yearMonthText}>
+        <Text style={[styles.yearMonthText, headerFontStyle]}>
           {month} {year}
         </Text>
         {iconNext ? (

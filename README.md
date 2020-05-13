@@ -52,6 +52,8 @@ const styles = StyleSheet.create({
 | Prop                 | Type       | default   |
 | -------------------- | ---------- | --------- |
 | containerStyle       | `Style`    | {}        |
+| headerStyle          | `Style`    | {}        |
+| headerFontStyle      | `Style`    | {}        |
 | fontStyle            | `Style`    | {}        |
 | weekDaysStyle        | `Style`    | {}        |
 | currentDayStyle      | `Style`    | {}        |

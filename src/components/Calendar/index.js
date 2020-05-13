@@ -7,6 +7,8 @@ import {Rows} from './Rows';
 import {getYear, getMonth, getDay, isHijiri} from '../../utils';
 
 const Calendar = ({
+  headerStyle,
+  headerFontStyle,
   selectedMonth,
   selectedPeriod,
   containerStyle,
@@ -42,6 +44,7 @@ const Calendar = ({
     <View style={[styles.container, containerStyle]}>
       <Header
         headerStyle={headerStyle}
+        headerFontStyle={headerFontStyle}
         month={months[month]}
         year={year}
         {...rest}

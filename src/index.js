@@ -24,6 +24,7 @@ const HCalendar = ({
   return (
     <Calendar
       headerStyle={headerStyle}
+      headerFontStyle={headerFontStyle}
       dayNameFontStyle={dayNameFontStyle}
       containerStyle={[styles.container, containerStyle]}
       weekDaysStyle={weekDaysStyle}
@@ -44,6 +45,7 @@ const HCalendar = ({
       iconNext={iconNext}
       markedDatesTextStyle={markedDatesTextStyle}
       calendarType={calendarType}
+
       //gregorian / hijiri
     />
   );

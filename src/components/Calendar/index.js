@@ -33,7 +33,6 @@ const Calendar = ({
   const firstDay = activeDate.startOf(isHijiri ? 'iMonth' : 'month').day();
 
   const _onPress = (item) => {
-    console.log(item);
     if (onDaySelect && item >= 1) onDaySelect(item);
   };
 
@@ -62,6 +61,7 @@ const Calendar = ({
         dayNameFontStyle={dayNameFontStyle}
         selectedDates={selectedDates}
         markedDatesTextStyle={markedDatesTextStyle}
+        calendarType={calendarType}
       />
     </View>
   );

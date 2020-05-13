@@ -1,6 +1,6 @@
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 const _Header = ({
   month,
@@ -15,7 +15,7 @@ const _Header = ({
     <View>
       <View style={[styles.yearMonth, headerStyle]}>
         {iconPrev ? (
-          iconPrev
+          <TouchableOpacity onPress={onPrev}> {iconPrev}</TouchableOpacity>
         ) : (
           <MaterialIcons
             style={{transform: [{rotate: '180deg'}]}}
@@ -29,7 +29,7 @@ const _Header = ({
           {month} {year}
         </Text>
         {iconNext ? (
-          iconNext
+          <TouchableOpacity onPress={onNext}>{iconNext}</TouchableOpacity>
         ) : (
           <MaterialIcons
             onPress={onNext}

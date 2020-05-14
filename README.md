@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
 | onDaySelect,         | `Callback` | Undefined |
 | locale               | `String`   | "en"      |
 | selectedDates        | `Object`   | "[]"      |
-| calendarType         | `String`   | "hijiri"  |
 | iconNext             | `Element`  |           |
 | iconPrev             | `Element`  |           |
 | calendarType         | `String`   | 'hijiri'  |

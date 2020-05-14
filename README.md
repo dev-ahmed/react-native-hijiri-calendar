@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
 | calendarType         | `String`   | "hijiri"  |
 | iconNext             | `Element`  |           |
 | iconPrev             | `Element`  |           |
-
 | calendarType         | `String`   | 'hijiri'  |
 
 ### Contributing

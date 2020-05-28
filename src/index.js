@@ -18,6 +18,7 @@ const HCalendar = ({
   iconNext,
   iconPrev,
   markedDatesTextStyle,
+  headerFontStyle,
 }) => {
   const [month, setMonth] = useState(0);
 

@@ -59,15 +59,14 @@ const styles = StyleSheet.create({
 | currentDayStyle      | `Style`    | {}        |
 | headerStyle          | `Style`    | {}        |
 | dayNameFontStyle     | `Style`    | {}        |
+| markedDatesTextStyle | `Style`    | {}        |
 | onPrev               | `Function` | Undefined |
 | onNext               | `Function` | Undefined |
 | onDaySelect,         | `Callback` | Undefined |
 | locale               | `String`   | "en"      |
 | selectedDates        | `Object`   | "[]"      |
-| calendarType         | `String`   | "hijiri"  |
 | iconNext             | `Element`  |           |
 | iconPrev             | `Element`  |           |
-| markedDatesTextStyle | `Style`    | {}        |
 | calendarType         | `String`   | 'hijiri'  |
 
 ### Contributing

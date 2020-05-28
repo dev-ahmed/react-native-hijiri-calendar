@@ -16,7 +16,7 @@ const _Header = ({
     <View>
       <View style={[styles.yearMonth, headerStyle]}>
         {iconPrev ? (
-          <TouchableOpacity onPress={onPrev}> {iconPrev}</TouchableOpacity>
+          <TouchableOpacity onPress={onPrev}>{iconPrev}</TouchableOpacity>
         ) : (
           <MaterialIcons
             style={{transform: [{rotate: '180deg'}]}}

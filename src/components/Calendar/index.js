@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {hMonthsShort, gMonthsShort} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
-import {getYear, getMonth, getDay, isHijiri} from '../../utils';
+import {getYear, getMonth, getDay, isHijiri, handleFormat} from '../../utils';
 
 const Calendar = ({
   headerStyle,
@@ -26,12 +26,21 @@ const Calendar = ({
   ...rest
 }) => {
   moment.locale(locale);
-  const activeDate = moment().add(selectedMonth, isHijiri ? 'iMonth' : 'month');
-  const year = getYear(activeDate, calendarType);
-  const month = getMonth(activeDate, calendarType);
+  const activeDate = moment().add(
+    selectedMonth,
+    isHijiri(calendarType) ? 'iMonth' : 'month',
+  );
 
-  const currentDay = getDay(activeDate, calendarType);
-  const firstDay = activeDate.startOf(isHijiri ? 'iMonth' : 'month').day();
+  const year = getYear(handleFormat(activeDate, calendarType), calendarType);
+  const month = getMonth(handleFormat(activeDate, calendarType), calendarType);
+  const currentDay = getDay(
+    handleFormat(activeDate, calendarType),
+    calendarType,
+  );
+
+  const firstDay = activeDate
+    .startOf(isHijiri(calendarType) ? 'iMonth' : 'month')
+    .day();
 
   const _onPress = (item) => {
     if (onDaySelect && item >= 1) onDaySelect(item);

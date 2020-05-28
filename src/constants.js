@@ -1,7 +1,10 @@
 import moment from 'moment-hijri';
-import {getHMonthDaysInYear} from './utils';
+import { getHMonthDaysInYear } from './utils';
 
 // export const weekDays = ['Ah', 'It', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'];
+
+export const hijiriDateFormat = 'iYYYY/iM/iD';
+export const gregorianDateFormat = 'YYYY/M/D';
 
 export const calendarTypes = {
   hijiri: 'hijiri',

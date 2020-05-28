@@ -1,10 +1,12 @@
 import React from 'react';
-import moment from 'moment-hijri';
 import {StyleSheet, View} from 'react-native';
 import {
   generateMatrix,
   generateSelectedDatesMatrix,
-  castHijiriDate,
+  getMonth,
+  getDay,
+  getCurrentMonth,
+  getCurrentYear,
 } from '../../utils';
 import {Col} from './Col';
 
@@ -23,14 +25,14 @@ const _Rows = ({
   onPress,
 }) => {
   const matrix = generateMatrix({month, firstDay, year, calendarType});
-  const currentMonth = moment().iMonth();
-  const currentYear = moment().iYear();
+  const currentMonth = getCurrentMonth(calendarType);
+  const currentYear = getCurrentYear(calendarType);
 
   const markedDates =
     selectedDates &&
     selectedDates.map((item) => {
-      const startingDay = castHijiriDate(item.from).iDate();
-      const endingDay = castHijiriDate(item.to).iDate();
+      const startingDay = getDay(item.from);
+      const endingDay = getDay(item.to);
 
       return {
         selectedDays: generateSelectedDatesMatrix({
@@ -38,10 +40,7 @@ const _Rows = ({
           endDate: endingDay,
           monthMatrix: matrix,
         }),
-        months: [
-          castHijiriDate(item.from).iMonth(),
-          castHijiriDate(item.to).iMonth(),
-        ],
+        months: [getMonth(item.from), getMonth(item.to)],
         style: item.style,
       };
     });

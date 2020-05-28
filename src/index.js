@@ -45,9 +45,7 @@ const HCalendar = ({
       iconPrev={iconPrev}
       iconNext={iconNext}
       markedDatesTextStyle={markedDatesTextStyle}
-      calendarType={calendarType}
-
-      //gregorian / hijiri
+      calendarType={calendarType} //gregorian / hijiri
     />
   );
 };

@@ -6,6 +6,8 @@ import {
   hMonthsShort,
   gNDays,
   hNDays,
+  hijiriDateFormat,
+  gregorianDateFormat,
 } from './constants';
 
 const m = moment();
@@ -86,21 +88,35 @@ export const generateSelectedDatesMatrix = ({
 };
 
 export const castHijiriDate = (date) => {
-  return moment(date, 'iYYYY/iM/iD');
+  return moment(date, hijiriDateFormat);
 };
 
-export const getDay = (date, type = calendarTypes.hijiri) => {
-  return isHijiri(type) ? moment(date).iDate() : moment(date).date();
+export const getDay = (date, type) => {
+  return isHijiri(type) ? castHijiriDate(date).iDate() : moment(date).date();
 };
 
 export const getMonth = (date, type) => {
-  return isHijiri(type) ? moment(date).iMonth() : moment(date).month();
+  return isHijiri(type) ? castHijiriDate(date).iMonth() : moment(date).month();
 };
 
 export const getYear = (date, type) => {
-  return isHijiri(type) ? moment(date).iYear() : moment(date).year();
+  return isHijiri(type) ? castHijiriDate(date).iYear() : moment(date).year();
 };
 
 export const isHijiri = (type) => {
   return type == calendarTypes.hijiri;
+};
+
+export const handleFormat = (date, type) => {
+  return moment(date).format(
+    isHijiri(type) ? hijiriDateFormat : gregorianDateFormat,
+  );
+};
+
+export const getCurrentMonth = (type) => {
+  return isHijiri(type) ? moment().iMonth() : moment().month();
+};
+
+export const getCurrentYear = (type) => {
+  return isHijiri(type) ? moment().iYear() : moment().year();
 };

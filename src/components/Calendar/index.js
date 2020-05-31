@@ -15,7 +15,7 @@ const Calendar = ({
   weekDaysStyle,
   fontStyle,
   currentDayStyle,
-  locale = 'en',
+  locale,
   onDaySelect,
   dayNameFontStyle,
   selectedDates,

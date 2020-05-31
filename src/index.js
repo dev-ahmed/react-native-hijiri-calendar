@@ -4,6 +4,7 @@ import {Calendar} from './components/Calendar';
 import {calendarTypes} from './constants';
 
 const HCalendar = ({
+  locale,
   containerStyle,
   fontStyle,
   onPrev,
@@ -24,6 +25,7 @@ const HCalendar = ({
 
   return (
     <Calendar
+      locale={locale}
       headerStyle={headerStyle}
       headerFontStyle={headerFontStyle}
       dayNameFontStyle={dayNameFontStyle}

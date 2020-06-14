@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import I18n from '../../i18n';
 const _Col = ({
   rowData,
   currentDay,
@@ -71,7 +72,7 @@ const _Col = ({
                 isNaN(item) && {...styles.dayName, ...dayNameFontStyle},
                 handleMarkedDaysText(markedDays, item),
               ]}>
-              {item != -1 ? item : null}
+              {item != -1 ? (isNaN(item) ? I18n.t(item) : item) : null}
             </Text>
             {Array.isArray(markedDays) &&
               markedDays.map((markedDay, index) => {

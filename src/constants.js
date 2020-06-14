@@ -9,8 +9,34 @@ export const calendarTypes = {
   gregorian: 'gregorian',
 };
 
-export const hMonthsShort = moment.iMonthsShort();
-export const gMonthsShort = moment.monthsShort();
+export const hMonthsShort = [
+  'Muh',
+  'Saf',
+  'Rab-I',
+  'Rab-II',
+  'Jum-I',
+  'Jum-II',
+  'Raj',
+  'Sha',
+  'Ram',
+  'Shw',
+  'Dhu-Q',
+  'Dhu-H',
+];
+export const gMonthsShort = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sept',
+  'Oct',
+  'Nov',
+  'Dec',
+];
 export const weekDays = moment.weekdaysMin();
 export const hNDays = getHMonthDaysInYear();
 export const gNDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];

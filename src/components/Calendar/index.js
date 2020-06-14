@@ -5,6 +5,7 @@ import {hMonthsShort, gMonthsShort} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
 import {getYear, getMonth, getDay, isHijiri, handleFormat} from '../../utils';
+import I18n from '../../i18n';
 
 const Calendar = ({
   headerStyle,
@@ -25,7 +26,8 @@ const Calendar = ({
   markedDatesTextStyle,
   ...rest
 }) => {
-  moment.locale(locale);
+  I18n.locale = locale;
+
   const activeDate = moment().add(
     selectedMonth,
     isHijiri(calendarType) ? 'iMonth' : 'month',

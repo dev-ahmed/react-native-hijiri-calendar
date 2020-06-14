@@ -44,9 +44,15 @@ export const handleFebruaryMaxDays = (month, year) => {
   return nDays;
 };
 
-export const generateMatrix = ({month, firstDay, calendarType, year}) => {
+export const generateMatrix = ({
+  month,
+  firstDay,
+  calendarType,
+  year,
+  customWeekDays,
+}) => {
   let matrix = [];
-  matrix[0] = weekDays;
+  matrix[0] = !!customWeekDays ? customWeekDays : weekDays;
 
   const nDays = isHijiri(calendarType)
     ? hNDays

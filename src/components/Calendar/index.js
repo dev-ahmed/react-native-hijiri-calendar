@@ -5,7 +5,7 @@ import {hMonthsShort, gMonthsShort} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
 import {getYear, getMonth, getDay, isHijiri, handleFormat} from '../../utils';
-import I18n from '../../i18n';
+// import { i } from '../../i18n';
 
 const Calendar = ({
   headerStyle,
@@ -16,7 +16,7 @@ const Calendar = ({
   weekDaysStyle,
   fontStyle,
   currentDayStyle,
-  locale,
+  // locale,
   onDaySelect,
   dayNameFontStyle,
   selectedDates,
@@ -24,9 +24,15 @@ const Calendar = ({
   iconPrev,
   iconNext,
   markedDatesTextStyle,
+  customGMonths,
+  customHMonths,
+  customWeekDays,
   ...rest
 }) => {
-  I18n.locale = locale;
+  // i.locale = locale;
+
+  const hMonths = !!customHMonths ? customHMonths : hMonthsShort;
+  const gMonths = !!customGMonths ? customGMonths : gMonthsShort;
 
   const activeDate = moment().add(
     selectedMonth,
@@ -48,7 +54,7 @@ const Calendar = ({
     if (onDaySelect && item >= 1) onDaySelect(item);
   };
 
-  const months = isHijiri(calendarType) ? hMonthsShort : gMonthsShort;
+  const months = isHijiri(calendarType) ? hMonths : gMonths;
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -62,6 +68,7 @@ const Calendar = ({
         iconPrev={iconPrev}
       />
       <Rows
+        customWeekDays={customWeekDays}
         highlightedPeriod={selectedPeriod}
         onPress={_onPress}
         firstDay={firstDay}

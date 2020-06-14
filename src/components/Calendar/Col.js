@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import I18n from '../../i18n';
+// import { i } from '../../i18n';
 const _Col = ({
   rowData,
   currentDay,
@@ -43,15 +43,22 @@ const _Col = ({
     }
   };
 
-  const handleMarkedDaysText = (markedDays, item) => {
+  const _onPress = (item) => {
+    const marked = isMarkedDay(markedDays, item);
+    onPress(item, marked);
+  };
+
+  const isMarkedDay = (markedDays, item) => {
+    let marked = false;
     if (Array.isArray(markedDays) && item >= 1) {
       markedDays.map((markedDay) => {
         const {selectedDays, months} = markedDay;
         if (months.includes(activeMonth) && selectedDays.includes(item)) {
-          return markedDatesTextStyle;
+          marked = true;
         }
       });
     }
+    return marked;
   };
 
   return (
@@ -59,7 +66,7 @@ const _Col = ({
       {rowData.map((item, colIndex) => {
         return (
           <TouchableOpacity
-            onPress={() => onPress(item)}
+            onPress={() => _onPress(item)}
             key={colIndex.toString()}
             style={[styles.col, isNaN(item) && styles.daysCol]}>
             <Text
@@ -70,9 +77,10 @@ const _Col = ({
                 item == currentDay && currentDayStyle,
                 fontStyle,
                 isNaN(item) && {...styles.dayName, ...dayNameFontStyle},
-                handleMarkedDaysText(markedDays, item),
+                isMarkedDay(markedDays, item) && markedDatesTextStyle,
               ]}>
-              {item != -1 ? (isNaN(item) ? I18n.t(item) : item) : null}
+              {/* {item != -1 ? (isNaN(item) ? i.t(item) : item) : null} */}
+              {item != -1 ? item : null}
             </Text>
             {Array.isArray(markedDays) &&
               markedDays.map((markedDay, index) => {

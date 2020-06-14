@@ -24,8 +24,15 @@ const _Rows = ({
   calendarType,
   markedDatesTextStyle,
   onPress,
+  customWeekDays,
 }) => {
-  const matrix = generateMatrix({month, firstDay, year, calendarType});
+  const matrix = generateMatrix({
+    month,
+    firstDay,
+    year,
+    calendarType,
+    customWeekDays,
+  });
   const currentMonth = getCurrentMonth(calendarType);
   const currentYear = getCurrentYear(calendarType);
 

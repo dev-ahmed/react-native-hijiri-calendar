@@ -1,7 +1,7 @@
-import I18n from 'i18n-js';
-import translations from './languages';
+// var i18n = require('i18n-js');
+// import translations from './values';
 
-I18n.fallbacks = true;
-I18n.translations = translations;
+// i18n.fallbacks = false;
+// i18n.translations = translations;
 
-export default I18n;
+// export { i18n as i };

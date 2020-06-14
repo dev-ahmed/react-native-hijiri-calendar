@@ -4,7 +4,7 @@ import {Calendar} from './components/Calendar';
 import {calendarTypes} from './constants';
 
 const HCalendar = ({
-  locale,
+  // locale,
   containerStyle,
   fontStyle,
   onPrev,
@@ -20,12 +20,18 @@ const HCalendar = ({
   iconPrev,
   markedDatesTextStyle,
   headerFontStyle,
+  customGMonths,
+  customHMonths,
+  customWeekDays,
 }) => {
   const [month, setMonth] = useState(0);
 
   return (
     <Calendar
-      locale={locale}
+      // locale={locale}
+      customWeekDays={customWeekDays}
+      customGMonths={customGMonths}
+      customHMonths={customHMonths}
       headerStyle={headerStyle}
       headerFontStyle={headerFontStyle}
       dayNameFontStyle={dayNameFontStyle}

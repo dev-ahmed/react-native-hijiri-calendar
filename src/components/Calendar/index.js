@@ -1,7 +1,7 @@
 import moment from 'moment-hijri';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {hMonthsShort, gMonthsShort} from '../../constants';
+import {hMonthsShort, gMonthsShort, calendarTypes} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
 import {getYear, getMonth, getDay, isHijiri, handleFormat} from '../../utils';
@@ -50,8 +50,13 @@ const Calendar = ({
     .startOf(isHijiri(calendarType) ? 'iMonth' : 'month')
     .day();
 
-  const _onPress = (item) => {
-    if (onDaySelect && item >= 1) onDaySelect(item);
+  const _onPress = (item, marked) => {
+    const date =
+      calendarType == calendarTypes.hijiri
+        ? `${item}/${month}/${year}`
+        : `${year}/${month}/${item}`;
+
+    if (onDaySelect && item >= 1) onDaySelect(date, marked);
   };
 
   const months = isHijiri(calendarType) ? hMonths : gMonths;

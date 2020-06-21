@@ -53,8 +53,8 @@ const Calendar = ({
   const _onPress = (item, marked) => {
     const date =
       calendarType == calendarTypes.hijiri
-        ? `${item}/${month}/${year}`
-        : `${year}/${month}/${item}`;
+        ? `${item}/${month + 1}/${year}`
+        : `${year}/${month + 1}/${item}`;
 
     if (onDaySelect && item >= 1) onDaySelect(date, marked);
   };

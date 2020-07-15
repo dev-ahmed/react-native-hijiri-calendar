@@ -3773,10 +3773,9 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
-moment-hijri@^2.1.2:
+"moment-hijri@https://github.com/dev-ahmed/moment-hijri":
   version "2.1.2"
-  resolved "https://registry.yarnpkg.com/moment-hijri/-/moment-hijri-2.1.2.tgz#ed95fa4f1fec45b41da132c9d4103b2726215225"
-  integrity sha512-p5ZOA1UzBHAAXiePh37XRjjwuyH78+1ShYZ7R6jogxketewG7kTCUjUmcP9c4Qsx8D8cqxwUWrESjtgdT6tNoA==
+  resolved "https://github.com/dev-ahmed/moment-hijri#7b700f47c5b73ec99b734bff1516d444fa0cf0a5"
   dependencies:
     moment "^2.24.0"
 

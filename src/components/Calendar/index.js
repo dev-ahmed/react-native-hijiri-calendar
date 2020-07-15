@@ -27,6 +27,8 @@ const Calendar = ({
   customGMonths,
   customHMonths,
   customWeekDays,
+  onNext,
+  onPrev,
   ...rest
 }) => {
   // i.locale = locale;
@@ -69,8 +71,10 @@ const Calendar = ({
         month={months[month]}
         year={year}
         {...rest}
-        iconNext={() => iconNext(month + 1)}
-        iconPrev={() => iconPrev(month - 1)}
+        onNext={() => onNext(month + 1)}
+        onPrev={() => onPrev(month - 1)}
+        iconNext={iconNext}
+        iconPrev={iconPrev}
       />
       <Rows
         customWeekDays={customWeekDays}

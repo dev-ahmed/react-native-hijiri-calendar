@@ -69,8 +69,8 @@ const Calendar = ({
         month={months[month]}
         year={year}
         {...rest}
-        iconNext={iconNext}
-        iconPrev={iconPrev}
+        iconNext={() => iconNext(month + 1)}
+        iconPrev={() => iconPrev(month - 1)}
       />
       <Rows
         customWeekDays={customWeekDays}

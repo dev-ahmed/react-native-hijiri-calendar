@@ -12,6 +12,7 @@ const _Col = ({
   activeMonth,
   markedDatesTextStyle,
   onPress,
+  dayContainerStyle,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -68,7 +69,11 @@ const _Col = ({
           <TouchableOpacity
             onPress={() => _onPress(item)}
             key={colIndex.toString()}
-            style={[styles.col, isNaN(item) && styles.daysCol]}>
+            style={[
+              styles.col,
+              isNaN(item) && styles.daysCol,
+              dayContainerStyle,
+            ]}>
             <Text
               style={[
                 handleColColor(colIndex),

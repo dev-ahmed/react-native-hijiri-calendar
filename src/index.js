@@ -23,11 +23,13 @@ const HCalendar = ({
   customGMonths,
   customHMonths,
   customWeekDays,
+  dayContainerStyle,
 }) => {
   const [month, setMonth] = useState(0);
 
   return (
     <Calendar
+      dayContainerStyle={dayContainerStyle}
       // locale={locale}
       customWeekDays={customWeekDays}
       customGMonths={customGMonths}

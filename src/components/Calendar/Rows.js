@@ -25,6 +25,7 @@ const _Rows = ({
   markedDatesTextStyle,
   onPress,
   customWeekDays,
+  ...props
 }) => {
   const matrix = generateMatrix({
     month,
@@ -63,6 +64,7 @@ const _Rows = ({
       {matrix.map((row, rowIndex) => {
         return (
           <Col
+            {...props}
             onPress={onPress}
             key={rowIndex.toString()}
             containerStyle={[

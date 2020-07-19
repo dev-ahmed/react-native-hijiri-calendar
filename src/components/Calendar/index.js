@@ -77,6 +77,7 @@ const Calendar = ({
         iconPrev={iconPrev}
       />
       <Rows
+        {...rest}
         customWeekDays={customWeekDays}
         highlightedPeriod={selectedPeriod}
         onPress={_onPress}

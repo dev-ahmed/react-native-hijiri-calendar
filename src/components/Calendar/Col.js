@@ -13,6 +13,7 @@ const _Col = ({
   markedDatesTextStyle,
   onPress,
   dayContainerStyle,
+  colContainerStyle,
 }) => {
   const holidayFontColor = '#a00';
 
@@ -63,7 +64,7 @@ const _Col = ({
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View style={[styles.container, containerStyle, colContainerStyle]}>
       {rowData.map((item, colIndex) => {
         return (
           <TouchableOpacity

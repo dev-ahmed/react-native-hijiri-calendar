@@ -52,8 +52,5 @@
     "native",
     "calendar",
     "hijiri"
-  ],
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/package/react-native-hijiri-calendar"
-  }
+  ]
 }

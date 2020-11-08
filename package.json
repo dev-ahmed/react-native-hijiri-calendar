@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "No description",
   "author": "Ahmed Nabil",
   "main": "src/index.js",
@@ -21,9 +21,9 @@
     }
   },
   "dependencies": {
-    "react": "16.9.0",
+    "react": "16.13.1",
     "moment-hijri": "https://github.com/dev-ahmed/moment-hijri",
-    "react-native": "0.61.5"
+    "react-native": "0.63.3"
   },
   "peerDependencies": {
     "react": ">=15.0.0",

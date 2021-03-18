@@ -36,12 +36,36 @@ const _Rows = ({
   });
   const currentMonth = getCurrentMonth(calendarType);
   const currentYear = getCurrentYear(calendarType);
-
+  const flatMatrix=[...matrix[4], ...matrix[5]]
+  const maxDay= Math.max(...flatMatrix)
+  let startingDay;
+  let endingDay;
+  let startingDayMonthFrom;
+  let endingDayMonthTo;
+  
   const markedDates =
     selectedDates &&
     selectedDates.map((item) => {
-      const startingDay = getDay(item.from);
-      const endingDay = getDay(item.to);
+      const isSameMonthFrom=getMonth(item.from) === month     
+       startingDay = getDay(item.from);
+       endingDay = getDay(item.to);
+       startingDayMonthFrom=getMonth(item.from)
+       endingDayMonthTo=getMonth(item.to)
+
+      if(isSameMonthFrom){
+        endingDay= maxDay;
+      }
+      if(endingDayMonthTo < month){
+        endingDay=null
+      }
+      if(endingDayMonthTo === month){
+        startingDay=1
+      }
+      
+      if(endingDayMonthTo > month && startingDayMonthFrom < month){
+        startingDay=1
+        endingDay=maxDay
+      }
 
       return {
         selectedDays: generateSelectedDatesMatrix({
@@ -58,7 +82,7 @@ const _Rows = ({
     currentMonth == month && currentYear == year && currentDay;
 
   const weekDaysBackground = {backgroundColor: '#bcced6'};
-
+  
   return (
     <View style={styles.container}>
       {matrix.map((row, rowIndex) => {

@@ -30,7 +30,7 @@ const _Col = ({
   const handleMarkedDays = (markedDay, item) => {
     if (item >= 1) {
       const {selectedDays, months, style} = markedDay;
-      if (months.includes(activeMonth) && selectedDays.includes(item)) {
+      if ((months.includes(activeMonth) || activeMonth - months[0] >= 1) && selectedDays.includes(item)) {
         const firstItem = selectedDays[0] == item && styles.leftRadius;
         const lastItem =
           selectedDays[selectedDays.length - 1] == item && styles.rightRadius;

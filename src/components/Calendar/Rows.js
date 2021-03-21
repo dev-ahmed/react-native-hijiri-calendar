@@ -40,31 +40,32 @@ const _Rows = ({
   const maxDay= Math.max(...flatMatrix)
   let startingDay;
   let endingDay;
-  let startingDayMonthFrom;
-  let endingDayMonthTo;
   
   const markedDates =
     selectedDates &&
     selectedDates.map((item) => {
-      const isSameMonthFrom=getMonth(item.from) === month     
-       startingDay = getDay(item.from);
-       endingDay = getDay(item.to);
-       startingDayMonthFrom=getMonth(item.from)
-       endingDayMonthTo=getMonth(item.to)
+      const isSameMonthFrom=getMonth(item.from) === month
+           
+      startingDay = getDay(item.from);
+      endingDay = getDay(item.to);
 
-      if(isSameMonthFrom){
-        endingDay= maxDay;
-      }
-      if(endingDayMonthTo < month){
-        endingDay=null
-      }
-      if(endingDayMonthTo === month){
-        startingDay=1
-      }
-      
-      if(endingDayMonthTo > month && startingDayMonthFrom < month){
-        startingDay=1
-        endingDay=maxDay
+      const startingDayMonthFrom=getMonth(item.from)
+      const endingDayMonthTo=getMonth(item.to)
+
+      if( startingDayMonthFrom <= month <= endingDayMonthTo ){
+        if(isSameMonthFrom && month!= endingDayMonthTo){
+          endingDay= maxDay;
+        }
+        if(endingDayMonthTo < month){
+          endingDay=null
+        }
+        if(endingDayMonthTo === month && month!= startingDayMonthFrom){
+          startingDay=1
+        }
+        if(endingDayMonthTo > month && startingDayMonthFrom < month){
+          startingDay=1
+          endingDay=maxDay
+        }
       }
 
       return {

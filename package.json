@@ -23,7 +23,7 @@
   "dependencies": {
     "react": "16.13.1",
     "moment-hijri": "https://github.com/dev-ahmed/moment-hijri",
-    "react-native": "0.63.3"
+    "react-native": "0.62.3"
   },
   "peerDependencies": {
     "react": ">=15.0.0",

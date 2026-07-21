@@ -1,26 +1,28 @@
 # react-native-hijiri-calendar
 
-React Native calendar for **Hijri (Umm al-Qura)** and **Gregorian** dates. Supports month navigation, day selection, and date-range highlighting.
+React Native calendar for **Hijri (Umm al-Qura)** and **Gregorian** dates. Supports month navigation, day selection, and date-range highlighting. Written in TypeScript.
+
+![HCalendar demo](./assets/demo.gif)
 
 ## Installation
 
-```bash
-yarn add react-native-hijiri-calendar
-yarn add react-native-vector-icons
-```
+Requires React 18+, React Native 0.76+, and `@expo/vector-icons` (included with Expo).
 
-Link vector icons for your platform if needed ([docs](https://github.com/oblador/react-native-vector-icons)).
+```bash
+pnpm add react-native-hijiri-calendar
+npx expo install @expo/vector-icons
+```
 
 [Expo Snack example](https://snack.expo.io/@dev-ahmed/hcalender-example)
 
 ## Usage
 
-```javascript
+```tsx
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {HCalendar} from 'react-native-hijiri-calendar';
 
-export default () => {
+export default function App() {
   return (
     <View style={styles.container}>
       <HCalendar
@@ -43,7 +45,7 @@ export default () => {
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -57,17 +59,17 @@ const styles = StyleSheet.create({
 
 ### Calendar types
 
-| Value        | Description                          |
-| ------------ | ------------------------------------ |
-| `hijiri`     | Hijri / Islamic calendar (default)   |
-| `gregorian`  | Gregorian calendar                   |
+| Value       | Description                        |
+| ----------- | ---------------------------------- |
+| `hijiri`    | Hijri / Islamic calendar (default) |
+| `gregorian` | Gregorian calendar                 |
 
 ### Date formats
 
-| Type       | Format used in `selectedDates` / `onDaySelect` |
-| ---------- | ---------------------------------------------- |
-| Hijri      | `YYYY/M/D` (e.g. `1441/9/1`)                   |
-| Gregorian  | `YYYY/M/D` (e.g. `2020/4/15`)                  |
+| Type      | Format used in `selectedDates` / `onDaySelect` |
+| --------- | ---------------------------------------------- |
+| Hijri     | `YYYY/M/D` (e.g. `1441/9/1`)                   |
+| Gregorian | `YYYY/M/D` (e.g. `2020/4/15`)                  |
 
 `onDaySelect` receives `(date, marked)` where `date` is a string in the format above, and `marked` is `true` if the day falls inside a `selectedDates` range.
 
@@ -75,28 +77,28 @@ For Hijri day taps, the returned string is `D/M/YYYY` (day-first). Prefer parsin
 
 ## Props
 
-| Prop                   | Type       | Default    | Description                                      |
-| ---------------------- | ---------- | ---------- | ------------------------------------------------ |
-| `calendarType`         | `string`   | `'hijiri'` | `'hijiri'` or `'gregorian'`                      |
-| `selectedDates`        | `array`    | `undefined`| Ranges to highlight: `{ from, to, style }`       |
-| `onDaySelect`          | `function` | —          | `(date, marked) => void`                         |
-| `onPrev`               | `function` | —          | Called when navigating to the previous month     |
-| `onNext`               | `function` | —          | Called when navigating to the next month         |
-| `iconPrev`             | `element`  | —          | Custom previous-month icon                       |
-| `iconNext`             | `element`  | —          | Custom next-month icon                           |
-| `customHMonths`        | `array`    | short names| Override Hijri month labels (12 strings)         |
-| `customGMonths`        | `array`    | short names| Override Gregorian month labels (12 strings)     |
-| `customWeekDays`       | `array`    | locale min | Override weekday labels (7 strings)              |
-| `containerStyle`       | `style`    | `{}`       | Outer calendar container                         |
-| `headerStyle`          | `style`    | `{}`       | Header bar                                       |
-| `headerFontStyle`      | `style`    | `{}`       | Header month/year text                           |
-| `fontStyle`            | `style`    | `{}`       | Day number text                                  |
-| `weekDaysStyle`        | `style`    | `{}`       | Weekday row                                      |
-| `dayNameFontStyle`     | `style`    | `{}`       | Weekday label text                               |
-| `currentDayStyle`      | `style`    | `{}`       | Today’s day text                                 |
-| `markedDatesTextStyle` | `style`    | `{}`       | Text style for days inside a marked range        |
-| `dayContainerStyle`    | `style`    | `{}`       | Individual day cell                              |
-| `colContainerStyle`    | `style`    | `{}`       | Row / column container                           |
+| Prop                   | Type       | Default     | Description                                  |
+| ---------------------- | ---------- | ----------- | -------------------------------------------- |
+| `calendarType`         | `string`   | `'hijiri'`  | `'hijiri'` or `'gregorian'`                  |
+| `selectedDates`        | `array`    | `undefined` | Ranges to highlight: `{ from, to, style }`   |
+| `onDaySelect`          | `function` | —           | `(date, marked) => void`                     |
+| `onPrev`               | `function` | —           | Called when navigating to the previous month |
+| `onNext`               | `function` | —           | Called when navigating to the next month     |
+| `iconPrev`             | `element`  | —           | Custom previous-month icon                   |
+| `iconNext`             | `element`  | —           | Custom next-month icon                       |
+| `customHMonths`        | `array`    | short names | Override Hijri month labels (12 strings)     |
+| `customGMonths`        | `array`    | short names | Override Gregorian month labels (12 strings) |
+| `customWeekDays`       | `array`    | locale min  | Override weekday labels (7 strings)          |
+| `containerStyle`       | `style`    | `{}`        | Outer calendar container                     |
+| `headerStyle`          | `style`    | `{}`        | Header bar                                   |
+| `headerFontStyle`      | `style`    | `{}`        | Header month/year text                       |
+| `fontStyle`            | `style`    | `{}`        | Day number text                              |
+| `weekDaysStyle`        | `style`    | `{}`        | Weekday row                                  |
+| `dayNameFontStyle`     | `style`    | `{}`        | Weekday label text                           |
+| `currentDayStyle`      | `style`    | `{}`        | Today’s day text                             |
+| `markedDatesTextStyle` | `style`    | `{}`        | Text style for days inside a marked range    |
+| `dayContainerStyle`    | `style`    | `{}`        | Individual day cell                          |
+| `colContainerStyle`    | `style`    | `{}`        | Row / column container                       |
 
 ### `selectedDates` item shape
 

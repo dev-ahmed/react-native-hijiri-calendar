@@ -1,5 +1,13 @@
 /example
 /node_modules
-package-lock.json
-yarn.lock
+/.yarn
+/yarn.lock
+/pnpm-lock.yaml
+/package-lock.json
 .expo
+*.log
+.git
+.DS_Store
+/coverage
+**/*.test.ts
+**/*.test.tsx

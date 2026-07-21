@@ -59,22 +59,21 @@ const HCalendar = ({
         style={
           calendarType === calendarTypes.hijiri ? styles.visible : styles.hidden
         }
-        pointerEvents={
-          calendarType === calendarTypes.hijiri ? 'auto' : 'none'
-        }>
+        pointerEvents={calendarType === calendarTypes.hijiri ? 'auto' : 'none'}
+      >
         <Calendar
           {...sharedProps}
           calendarType={calendarTypes.hijiri}
           activeDate={hijiriDate}
           onPrev={() => {
             onPrev?.();
-            setHijiriDate(current =>
+            setHijiriDate((current) =>
               moment(current).startOf('iMonth').subtract(1, 'iMonth').valueOf(),
             );
           }}
           onNext={() => {
             onNext?.();
-            setHijiriDate(current =>
+            setHijiriDate((current) =>
               moment(current).startOf('iMonth').add(1, 'iMonth').valueOf(),
             );
           }}
@@ -89,20 +88,21 @@ const HCalendar = ({
         }
         pointerEvents={
           calendarType === calendarTypes.gregorian ? 'auto' : 'none'
-        }>
+        }
+      >
         <Calendar
           {...sharedProps}
           calendarType={calendarTypes.gregorian}
           activeDate={gregorianDate}
           onPrev={() => {
             onPrev?.();
-            setGregorianDate(current =>
+            setGregorianDate((current) =>
               moment(current).startOf('month').subtract(1, 'month').valueOf(),
             );
           }}
           onNext={() => {
             onNext?.();
-            setGregorianDate(current =>
+            setGregorianDate((current) =>
               moment(current).startOf('month').add(1, 'month').valueOf(),
             );
           }}

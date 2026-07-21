@@ -15,7 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.switchTrack}>
-        {calendarOptions.map(option => {
+        {calendarOptions.map((option) => {
           const isActive = calendarType === option.value;
 
           return (
@@ -25,12 +25,14 @@ export default function App() {
               style={[
                 styles.switchOption,
                 isActive && styles.switchOptionActive,
-              ]}>
+              ]}
+            >
               <Text
                 style={[
                   styles.switchOptionText,
                   isActive && styles.switchOptionTextActive,
-                ]}>
+                ]}
+              >
                 {option.label}
               </Text>
             </Pressable>
@@ -39,10 +41,9 @@ export default function App() {
       </View>
       <View style={styles.calendarContainer}>
         <View
-          style={
-            calendarType === 'hijiri' ? styles.visible : styles.hidden
-          }
-          pointerEvents={calendarType === 'hijiri' ? 'auto' : 'none'}>
+          style={calendarType === 'hijiri' ? styles.visible : styles.hidden}
+          pointerEvents={calendarType === 'hijiri' ? 'auto' : 'none'}
+        >
           <HCalendar
             calendarType="hijiri"
             onDaySelect={(day, marked) => {
@@ -63,10 +64,9 @@ export default function App() {
           />
         </View>
         <View
-          style={
-            calendarType === 'gregorian' ? styles.visible : styles.hidden
-          }
-          pointerEvents={calendarType === 'gregorian' ? 'auto' : 'none'}>
+          style={calendarType === 'gregorian' ? styles.visible : styles.hidden}
+          pointerEvents={calendarType === 'gregorian' ? 'auto' : 'none'}
+        >
           <HCalendar calendarType="gregorian" />
         </View>
       </View>

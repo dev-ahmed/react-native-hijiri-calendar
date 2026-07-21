@@ -45,7 +45,7 @@ export default function App() {
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -59,17 +59,17 @@ const styles = StyleSheet.create({
 
 ### Calendar types
 
-| Value        | Description                          |
-| ------------ | ------------------------------------ |
-| `hijiri`     | Hijri / Islamic calendar (default)   |
-| `gregorian`  | Gregorian calendar                   |
+| Value       | Description                        |
+| ----------- | ---------------------------------- |
+| `hijiri`    | Hijri / Islamic calendar (default) |
+| `gregorian` | Gregorian calendar                 |
 
 ### Date formats
 
-| Type       | Format used in `selectedDates` / `onDaySelect` |
-| ---------- | ---------------------------------------------- |
-| Hijri      | `YYYY/M/D` (e.g. `1441/9/1`)                   |
-| Gregorian  | `YYYY/M/D` (e.g. `2020/4/15`)                  |
+| Type      | Format used in `selectedDates` / `onDaySelect` |
+| --------- | ---------------------------------------------- |
+| Hijri     | `YYYY/M/D` (e.g. `1441/9/1`)                   |
+| Gregorian | `YYYY/M/D` (e.g. `2020/4/15`)                  |
 
 `onDaySelect` receives `(date, marked)` where `date` is a string in the format above, and `marked` is `true` if the day falls inside a `selectedDates` range.
 
@@ -77,28 +77,28 @@ For Hijri day taps, the returned string is `D/M/YYYY` (day-first). Prefer parsin
 
 ## Props
 
-| Prop                   | Type       | Default    | Description                                      |
-| ---------------------- | ---------- | ---------- | ------------------------------------------------ |
-| `calendarType`         | `string`   | `'hijiri'` | `'hijiri'` or `'gregorian'`                      |
-| `selectedDates`        | `array`    | `undefined`| Ranges to highlight: `{ from, to, style }`       |
-| `onDaySelect`          | `function` | —          | `(date, marked) => void`                         |
-| `onPrev`               | `function` | —          | Called when navigating to the previous month     |
-| `onNext`               | `function` | —          | Called when navigating to the next month         |
-| `iconPrev`             | `element`  | —          | Custom previous-month icon                       |
-| `iconNext`             | `element`  | —          | Custom next-month icon                           |
-| `customHMonths`        | `array`    | short names| Override Hijri month labels (12 strings)         |
-| `customGMonths`        | `array`    | short names| Override Gregorian month labels (12 strings)     |
-| `customWeekDays`       | `array`    | locale min | Override weekday labels (7 strings)              |
-| `containerStyle`       | `style`    | `{}`       | Outer calendar container                         |
-| `headerStyle`          | `style`    | `{}`       | Header bar                                       |
-| `headerFontStyle`      | `style`    | `{}`       | Header month/year text                           |
-| `fontStyle`            | `style`    | `{}`       | Day number text                                  |
-| `weekDaysStyle`        | `style`    | `{}`       | Weekday row                                      |
-| `dayNameFontStyle`     | `style`    | `{}`       | Weekday label text                               |
-| `currentDayStyle`      | `style`    | `{}`       | Today’s day text                                 |
-| `markedDatesTextStyle` | `style`    | `{}`       | Text style for days inside a marked range        |
-| `dayContainerStyle`    | `style`    | `{}`       | Individual day cell                              |
-| `colContainerStyle`    | `style`    | `{}`       | Row / column container                           |
+| Prop                   | Type       | Default     | Description                                  |
+| ---------------------- | ---------- | ----------- | -------------------------------------------- |
+| `calendarType`         | `string`   | `'hijiri'`  | `'hijiri'` or `'gregorian'`                  |
+| `selectedDates`        | `array`    | `undefined` | Ranges to highlight: `{ from, to, style }`   |
+| `onDaySelect`          | `function` | —           | `(date, marked) => void`                     |
+| `onPrev`               | `function` | —           | Called when navigating to the previous month |
+| `onNext`               | `function` | —           | Called when navigating to the next month     |
+| `iconPrev`             | `element`  | —           | Custom previous-month icon                   |
+| `iconNext`             | `element`  | —           | Custom next-month icon                       |
+| `customHMonths`        | `array`    | short names | Override Hijri month labels (12 strings)     |
+| `customGMonths`        | `array`    | short names | Override Gregorian month labels (12 strings) |
+| `customWeekDays`       | `array`    | locale min  | Override weekday labels (7 strings)          |
+| `containerStyle`       | `style`    | `{}`        | Outer calendar container                     |
+| `headerStyle`          | `style`    | `{}`        | Header bar                                   |
+| `headerFontStyle`      | `style`    | `{}`        | Header month/year text                       |
+| `fontStyle`            | `style`    | `{}`        | Day number text                              |
+| `weekDaysStyle`        | `style`    | `{}`        | Weekday row                                  |
+| `dayNameFontStyle`     | `style`    | `{}`        | Weekday label text                           |
+| `currentDayStyle`      | `style`    | `{}`        | Today’s day text                             |
+| `markedDatesTextStyle` | `style`    | `{}`        | Text style for days inside a marked range    |
+| `dayContainerStyle`    | `style`    | `{}`        | Individual day cell                          |
+| `colContainerStyle`    | `style`    | `{}`        | Row / column container                       |
 
 ### `selectedDates` item shape
 

@@ -1,1 +1,0 @@
-export {HCalendar} from './src/';

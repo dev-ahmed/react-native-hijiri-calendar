@@ -1,48 +1,57 @@
 {
   "name": "react-native-hijiri-calendar",
   "version": "1.5.4",
-  "description": "No description",
+  "description": "React Native Hijri and Gregorian calendar component",
   "author": "Ahmed Nabil",
-  "main": "src/index.js",
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
+  "files": [
+    "src",
+    "index.ts",
+    "README.md",
+    "assets"
+  ],
   "scripts": {
     "lint": "eslint .",
-    "lint-fix": "eslint --fix src/**/*.js",
-    "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
-    "format-code": "yarn run pretty && yarn run lint-fix",
-    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-* && rm -rf node_modules/ && yarn cache clean && yarn install && cd .."
+    "lint-fix": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "format-code": "pnpm run pretty && pnpm run lint-fix",
+    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-* && rm -rf node_modules/ && pnpm store prune && pnpm install"
   },
+  "packageManager": "pnpm@9.15.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/dev-ahmed/react-native-hijiri-calendar"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run format-code && yarn run lint"
+      "pre-commit": "pnpm run format-code && pnpm run lint"
     }
   },
   "dependencies": {
-    "react": "16.13.1",
-    "moment-hijri": "https://github.com/dev-ahmed/moment-hijri",
-    "react-native": "0.63.3"
+    "moment-hijri": "^3.0.0"
   },
   "peerDependencies": {
-    "react": ">=15.0.0",
-    "react-native": "*",
-    "react-native-vector-icons": "^6.6.0",
-    "i18n-js": "^3.5.1"
+    "@expo/vector-icons": "*",
+    "react": ">=18.0.0",
+    "react-native": ">=0.76.0"
   },
   "devDependencies": {
-    "@babel/core": "7.8.7",
-    "@babel/runtime": "7.8.7",
-    "@react-native-community/eslint-config": "0.0.5",
-    "eslint": "6.8.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-react": "^7.19.0",
+    "@babel/core": "^7.25.2",
+    "@babel/runtime": "^7.25.0",
+    "@expo/vector-icons": "^15.0.0",
+    "@react-native/babel-preset": "0.86.0",
+    "@react-native/eslint-config": "0.86.0",
+    "@types/moment-hijri": "^2.1.4",
+    "@types/react": "^19.2.2",
+    "eslint": "^8.57.0",
     "husky": "^4.2.3",
-    "install-peers-cli": "^2.2.0",
-    "metro-react-native-babel-preset": "0.56.4",
-    "prettier": "^2.0.4",
-    "react-test-renderer": "^16.13.1"
+    "prettier": "^3.0.0",
+    "react": "19.2.3",
+    "react-native": "0.86.0",
+    "react-test-renderer": "19.2.3",
+    "typescript": "^5.8.0"
   },
   "bugs": {
     "url": "https://github.com/dev-ahmed/react-native-hijiri-calendar/issues"
@@ -51,6 +60,12 @@
     "react",
     "native",
     "calendar",
-    "hijiri"
-  ]
+    "hijiri",
+    "typescript"
+  ],
+  "pnpm": {
+    "patchedDependencies": {
+      "expo-modules-jsi@57.0.3": "patches/expo-modules-jsi@57.0.3.patch"
+    }
+  }
 }

@@ -1,26 +1,28 @@
 # react-native-hijiri-calendar
 
-React Native calendar for **Hijri (Umm al-Qura)** and **Gregorian** dates. Supports month navigation, day selection, and date-range highlighting.
+React Native calendar for **Hijri (Umm al-Qura)** and **Gregorian** dates. Supports month navigation, day selection, and date-range highlighting. Written in TypeScript.
+
+![HCalendar demo](./assets/demo.gif)
 
 ## Installation
 
-```bash
-yarn add react-native-hijiri-calendar
-yarn add react-native-vector-icons
-```
+Requires React 18+, React Native 0.76+, and `@expo/vector-icons` (included with Expo).
 
-Link vector icons for your platform if needed ([docs](https://github.com/oblador/react-native-vector-icons)).
+```bash
+pnpm add react-native-hijiri-calendar
+npx expo install @expo/vector-icons
+```
 
 [Expo Snack example](https://snack.expo.io/@dev-ahmed/hcalender-example)
 
 ## Usage
 
-```javascript
+```tsx
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {HCalendar} from 'react-native-hijiri-calendar';
 
-export default () => {
+export default function App() {
   return (
     <View style={styles.container}>
       <HCalendar

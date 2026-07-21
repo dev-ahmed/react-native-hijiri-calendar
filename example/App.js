@@ -25,12 +25,14 @@ export default function App() {
               style={[
                 styles.switchOption,
                 isActive && styles.switchOptionActive,
-              ]}>
+              ]}
+            >
               <Text
                 style={[
                   styles.switchOptionText,
                   isActive && styles.switchOptionTextActive,
-                ]}>
+                ]}
+              >
                 {option.label}
               </Text>
             </Pressable>

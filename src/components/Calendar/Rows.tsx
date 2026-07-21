@@ -75,10 +75,7 @@ const _Rows = ({
       const startingDayMonthFrom = getMonth(item.from, calendarType);
       const endingDayMonthTo = getMonth(item.to, calendarType);
 
-      if (
-        startingDayMonthFrom <= month &&
-        month <= endingDayMonthTo
-      ) {
+      if (startingDayMonthFrom <= month && month <= endingDayMonthTo) {
         if (isSameMonthFrom && month !== endingDayMonthTo) {
           endingDay = maxDay;
         }

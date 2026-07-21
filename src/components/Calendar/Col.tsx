@@ -111,7 +111,8 @@ const _Col = ({
               styles.col,
               typeof item !== 'number' && styles.daysCol,
               dayContainerStyle,
-            ]}>
+            ]}
+          >
             <Text
               style={[
                 handleColColor(colIndex),
@@ -125,7 +126,8 @@ const _Col = ({
                 },
                 isMarkedDay(markedDays, item, activeMonth) &&
                   markedDatesTextStyle,
-              ]}>
+              ]}
+            >
               {item === -1 ? '' : String(item)}
             </Text>
             {Array.isArray(markedDays) &&

@@ -11,7 +11,11 @@ import {hMonthsShort, gMonthsShort, calendarTypes} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
 import {getDateParts, isHijiri} from '../../utils';
-import type {CalendarType, HCalendarProps, SelectedDateRange} from '../../types';
+import type {
+  CalendarType,
+  HCalendarProps,
+  SelectedDateRange,
+} from '../../types';
 
 type CalendarProps = {
   headerStyle?: StyleProp<ViewStyle>;

@@ -31,7 +31,7 @@ const HCalendar = ({
   const [activeDate, setActiveDate] = useState(() => moment().valueOf());
 
   const shiftMonth = (direction: -1 | 1) => {
-    setActiveDate(current => {
+    setActiveDate((current) => {
       const nextDate = isHijiri(calendarType)
         ? moment(current).add(direction, 'iMonth')
         : moment(current).add(direction, 'month');

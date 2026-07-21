@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React Native Hijri and Gregorian calendar component",
   "author": "Ahmed Nabil",
   "main": "src/index.tsx",

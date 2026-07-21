@@ -15,7 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.switchTrack}>
-        {calendarOptions.map((option) => {
+        {calendarOptions.map(option => {
           const isActive = calendarType === option.value;
 
           return (
@@ -25,14 +25,12 @@ export default function App() {
               style={[
                 styles.switchOption,
                 isActive && styles.switchOptionActive,
-              ]}
-            >
+              ]}>
               <Text
                 style={[
                   styles.switchOptionText,
                   isActive && styles.switchOptionTextActive,
-                ]}
-              >
+                ]}>
                 {option.label}
               </Text>
             </Pressable>
@@ -40,28 +38,37 @@ export default function App() {
         })}
       </View>
       <View style={styles.calendarContainer}>
-        <HCalendar
-          calendarType={calendarType}
-          onDaySelect={(day, marked) => {
-            console.log(day, marked);
-          }}
-          selectedDates={[
-            {
-              from: '1441/9/1',
-              to: '1441/9/5',
-              style: {
-                borderColor: 'blue',
+        <View
+          style={
+            calendarType === 'hijiri' ? styles.visible : styles.hidden
+          }
+          pointerEvents={calendarType === 'hijiri' ? 'auto' : 'none'}>
+          <HCalendar
+            calendarType="hijiri"
+            onDaySelect={(day, marked) => {
+              console.log(day, marked);
+            }}
+            selectedDates={[
+              {
+                from: '1441/9/1',
+                to: '1441/9/5',
+                style: {borderColor: 'blue'},
               },
-            },
-            {
-              from: '1441/9/4',
-              to: '1441/9/12',
-              style: {
-                borderColor: 'green',
+              {
+                from: '1441/9/4',
+                to: '1441/9/12',
+                style: {borderColor: 'green'},
               },
-            },
-          ]}
-        />
+            ]}
+          />
+        </View>
+        <View
+          style={
+            calendarType === 'gregorian' ? styles.visible : styles.hidden
+          }
+          pointerEvents={calendarType === 'gregorian' ? 'auto' : 'none'}>
+          <HCalendar calendarType="gregorian" />
+        </View>
       </View>
     </View>
   );
@@ -111,5 +118,11 @@ const styles = StyleSheet.create({
   calendarContainer: {
     width: '100%',
     height: '38%',
+  },
+  visible: {
+    display: 'flex',
+  },
+  hidden: {
+    display: 'none',
   },
 });

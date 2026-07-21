@@ -1,9 +1,8 @@
 import moment from 'moment-hijri';
 import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Calendar} from './components/Calendar';
 import {calendarTypes} from './constants';
-import {isHijiri} from './utils';
 import type {HCalendarProps} from './types';
 
 const HCalendar = ({
@@ -28,47 +27,88 @@ const HCalendar = ({
   dayContainerStyle,
   colContainerStyle,
 }: HCalendarProps) => {
-  const [activeDate, setActiveDate] = useState(() => moment().valueOf());
+  const [hijiriDate, setHijiriDate] = useState(() =>
+    moment().startOf('iMonth').valueOf(),
+  );
+  const [gregorianDate, setGregorianDate] = useState(() =>
+    moment().startOf('month').valueOf(),
+  );
 
-  const shiftMonth = (direction: -1 | 1) => {
-    setActiveDate((current) => {
-      const nextDate = isHijiri(calendarType)
-        ? moment(current).add(direction, 'iMonth')
-        : moment(current).add(direction, 'month');
-      return nextDate.valueOf();
-    });
+  const sharedProps = {
+    colContainerStyle,
+    dayContainerStyle,
+    customWeekDays,
+    customGMonths,
+    customHMonths,
+    headerStyle,
+    headerFontStyle,
+    dayNameFontStyle,
+    weekDaysStyle,
+    fontStyle,
+    currentDayStyle,
+    selectedDates,
+    onDaySelect,
+    iconPrev,
+    iconNext,
+    markedDatesTextStyle,
   };
 
   return (
-    <Calendar
-      colContainerStyle={colContainerStyle}
-      dayContainerStyle={dayContainerStyle}
-      customWeekDays={customWeekDays}
-      customGMonths={customGMonths}
-      customHMonths={customHMonths}
-      headerStyle={headerStyle}
-      headerFontStyle={headerFontStyle}
-      dayNameFontStyle={dayNameFontStyle}
-      containerStyle={[styles.container, containerStyle]}
-      weekDaysStyle={weekDaysStyle}
-      fontStyle={fontStyle}
-      currentDayStyle={currentDayStyle}
-      activeDate={activeDate}
-      onPrev={() => {
-        onPrev?.();
-        shiftMonth(-1);
-      }}
-      onNext={() => {
-        onNext?.();
-        shiftMonth(1);
-      }}
-      selectedDates={selectedDates}
-      onDaySelect={onDaySelect}
-      iconPrev={iconPrev}
-      iconNext={iconNext}
-      markedDatesTextStyle={markedDatesTextStyle}
-      calendarType={calendarType}
-    />
+    <View style={[styles.container, containerStyle]}>
+      <View
+        style={
+          calendarType === calendarTypes.hijiri ? styles.visible : styles.hidden
+        }
+        pointerEvents={
+          calendarType === calendarTypes.hijiri ? 'auto' : 'none'
+        }>
+        <Calendar
+          {...sharedProps}
+          calendarType={calendarTypes.hijiri}
+          activeDate={hijiriDate}
+          onPrev={() => {
+            onPrev?.();
+            setHijiriDate(current =>
+              moment(current).startOf('iMonth').subtract(1, 'iMonth').valueOf(),
+            );
+          }}
+          onNext={() => {
+            onNext?.();
+            setHijiriDate(current =>
+              moment(current).startOf('iMonth').add(1, 'iMonth').valueOf(),
+            );
+          }}
+        />
+      </View>
+
+      <View
+        style={
+          calendarType === calendarTypes.gregorian
+            ? styles.visible
+            : styles.hidden
+        }
+        pointerEvents={
+          calendarType === calendarTypes.gregorian ? 'auto' : 'none'
+        }>
+        <Calendar
+          {...sharedProps}
+          calendarType={calendarTypes.gregorian}
+          activeDate={gregorianDate}
+          onPrev={() => {
+            onPrev?.();
+            setGregorianDate(current =>
+              moment(current).startOf('month').subtract(1, 'month').valueOf(),
+            );
+          }}
+          onNext={() => {
+            onNext?.();
+            setGregorianDate(current =>
+              moment(current).startOf('month').add(1, 'month').valueOf(),
+            );
+          }}
+        />
+      </View>
+    </View>
   );
 };
 
@@ -76,6 +116,12 @@ const styles = StyleSheet.create({
   container: {
     width: 350,
     alignSelf: 'center',
+  },
+  visible: {
+    display: 'flex',
+  },
+  hidden: {
+    display: 'none',
   },
 });
 

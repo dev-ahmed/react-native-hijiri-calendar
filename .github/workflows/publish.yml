@@ -80,6 +80,6 @@ jobs:
 
       - name: Publish
         if: steps.version.outputs.published == 'false'
-        run: pnpm publish -w --access public --no-git-checks --provenance
+        run: pnpm publish --access public --no-git-checks --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

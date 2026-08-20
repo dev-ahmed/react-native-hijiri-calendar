@@ -68,7 +68,10 @@ jobs:
           gh release create "v${VERSION}" --title "v${VERSION}" --generate-notes
 
       - name: Whoami
-        run: npm whoami
+        run: |
+          npm whoami
+          npm profile get 2>&1 || true
+          npm access list packages 2>&1 || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

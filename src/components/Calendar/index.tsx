@@ -11,6 +11,8 @@ import {hMonthsShort, gMonthsShort, calendarTypes} from '../../constants';
 import {Header} from './Header';
 import {Rows} from './Rows';
 import {getDateParts, isHijiri} from '../../utils';
+import {getEventDaysForMonth} from '../../googleCalendar/utils';
+import type {CalendarEvent, SelectedEventDay} from '../../googleCalendar/types';
 import type {
   CalendarType,
   HCalendarProps,
@@ -40,6 +42,9 @@ type CalendarProps = {
   onPrev: () => void;
   dayContainerStyle?: StyleProp<ViewStyle>;
   colContainerStyle?: StyleProp<ViewStyle>;
+  googleEvents?: CalendarEvent[];
+  eventDotStyle?: StyleProp<ViewStyle>;
+  onEventDayPress?: (day: SelectedEventDay) => void;
 };
 
 const Calendar = ({
@@ -64,6 +69,9 @@ const Calendar = ({
   onPrev,
   dayContainerStyle,
   colContainerStyle,
+  googleEvents,
+  eventDotStyle,
+  onEventDayPress,
 }: CalendarProps) => {
   const hMonths = customHMonths ? customHMonths : hMonthsShort;
   const gMonths = customGMonths ? customGMonths : gMonthsShort;
@@ -89,6 +97,7 @@ const Calendar = ({
         : `${year}/${month + 1}/${item}`;
 
     onDaySelect?.(date, marked);
+    onEventDayPress?.({year, month, day: item});
   };
 
   const months = isHijiri(calendarType) ? hMonths : gMonths;
@@ -121,6 +130,13 @@ const Calendar = ({
         calendarType={calendarType}
         dayContainerStyle={dayContainerStyle}
         colContainerStyle={colContainerStyle}
+        eventDays={getEventDaysForMonth(
+          googleEvents,
+          calendarType,
+          year,
+          month,
+        )}
+        eventDotStyle={eventDotStyle}
       />
     </View>
   );

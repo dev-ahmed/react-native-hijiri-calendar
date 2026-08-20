@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijiri-calendar",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "React Native Hijri and Gregorian calendar component",
   "author": "Ahmed Nabil",
   "main": "src/index.tsx",
@@ -34,8 +34,22 @@
   },
   "peerDependencies": {
     "@expo/vector-icons": "*",
+    "expo-auth-session": "*",
+    "expo-crypto": "*",
+    "expo-web-browser": "*",
     "react": ">=18.0.0",
     "react-native": ">=0.76.0"
+  },
+  "peerDependenciesMeta": {
+    "expo-auth-session": {
+      "optional": true
+    },
+    "expo-crypto": {
+      "optional": true
+    },
+    "expo-web-browser": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -46,6 +60,9 @@
     "@types/moment-hijri": "^2.1.4",
     "@types/react": "^19.2.2",
     "eslint": "^8.57.0",
+    "expo-auth-session": "~57.0.7",
+    "expo-crypto": "~57.0.1",
+    "expo-web-browser": "~57.0.2",
     "husky": "^4.2.3",
     "prettier": "^3.0.0",
     "react": "19.2.3",
@@ -63,6 +80,9 @@
     "hijiri",
     "typescript"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "pnpm": {
     "patchedDependencies": {
       "expo-modules-jsi@57.0.3": "patches/expo-modules-jsi@57.0.3.patch"

@@ -33,6 +33,8 @@ type RowsProps = {
   customWeekDays?: string[];
   dayContainerStyle?: StyleProp<ViewStyle>;
   colContainerStyle?: StyleProp<ViewStyle>;
+  eventDays?: number[];
+  eventDotStyle?: StyleProp<ViewStyle>;
 };
 
 const _Rows = ({
@@ -49,6 +51,8 @@ const _Rows = ({
   markedDatesTextStyle,
   onPress,
   customWeekDays,
+  eventDays,
+  eventDotStyle,
   ...props
 }: RowsProps) => {
   const matrix = generateMatrix({
@@ -130,6 +134,8 @@ const _Rows = ({
             dayNameFontStyle={dayNameFontStyle}
             markedDays={markedDates}
             markedDatesTextStyle={markedDatesTextStyle}
+            eventDays={eventDays}
+            eventDotStyle={eventDotStyle}
           />
         );
       })}

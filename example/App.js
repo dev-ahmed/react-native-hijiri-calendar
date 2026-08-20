@@ -8,37 +8,57 @@ const calendarOptions = [
   {value: 'gregorian', label: 'Gregorian'},
 ];
 
+const demoSelectedDates = [
+  {
+    from: '1441/9/1',
+    to: '1441/9/5',
+    style: {borderColor: 'blue'},
+  },
+  {
+    from: '1441/9/4',
+    to: '1441/9/12',
+    style: {borderColor: 'green'},
+  },
+];
+
+const OptionSwitch = ({options, value, onChange}) => {
+  return (
+    <View style={styles.switchTrack}>
+      {options.map((option) => {
+        const isActive = value === option.value;
+
+        return (
+          <Pressable
+            key={String(option.value)}
+            onPress={() => onChange(option.value)}
+            style={[styles.switchOption, isActive && styles.switchOptionActive]}
+          >
+            <Text
+              style={[
+                styles.switchOptionText,
+                isActive && styles.switchOptionTextActive,
+              ]}
+            >
+              {option.label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+};
+
 export default function App() {
   const [calendarType, setCalendarType] = useState('hijiri');
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.switchTrack}>
-        {calendarOptions.map((option) => {
-          const isActive = calendarType === option.value;
-
-          return (
-            <Pressable
-              key={option.value}
-              onPress={() => setCalendarType(option.value)}
-              style={[
-                styles.switchOption,
-                isActive && styles.switchOptionActive,
-              ]}
-            >
-              <Text
-                style={[
-                  styles.switchOptionText,
-                  isActive && styles.switchOptionTextActive,
-                ]}
-              >
-                {option.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
+      <OptionSwitch
+        options={calendarOptions}
+        value={calendarType}
+        onChange={setCalendarType}
+      />
       <View style={styles.calendarContainer}>
         <View
           style={calendarType === 'hijiri' ? styles.visible : styles.hidden}
@@ -46,28 +66,18 @@ export default function App() {
         >
           <HCalendar
             calendarType="hijiri"
+            agenda
             onDaySelect={(day, marked) => {
               console.log(day, marked);
             }}
-            selectedDates={[
-              {
-                from: '1441/9/1',
-                to: '1441/9/5',
-                style: {borderColor: 'blue'},
-              },
-              {
-                from: '1441/9/4',
-                to: '1441/9/12',
-                style: {borderColor: 'green'},
-              },
-            ]}
+            selectedDates={demoSelectedDates}
           />
         </View>
         <View
           style={calendarType === 'gregorian' ? styles.visible : styles.hidden}
           pointerEvents={calendarType === 'gregorian' ? 'auto' : 'none'}
         >
-          <HCalendar calendarType="gregorian" />
+          <HCalendar calendarType="gregorian" agenda />
         </View>
       </View>
     </View>
@@ -81,10 +91,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f3f6f8',
+    paddingHorizontal: 16,
   },
   switchTrack: {
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 12,
     padding: 4,
     borderRadius: 14,
     backgroundColor: '#e2ebef',

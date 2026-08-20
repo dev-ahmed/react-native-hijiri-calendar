@@ -23,6 +23,8 @@ type ColProps = {
   onPress: (item: string | number, marked: boolean) => void;
   dayContainerStyle?: StyleProp<ViewStyle>;
   colContainerStyle?: StyleProp<ViewStyle>;
+  eventDays?: number[];
+  eventDotStyle?: StyleProp<ViewStyle>;
 };
 
 const isMarkedDay = (
@@ -52,6 +54,8 @@ const _Col = ({
   onPress,
   dayContainerStyle,
   colContainerStyle,
+  eventDays,
+  eventDotStyle,
 }: ColProps) => {
   const holidayFontColor = '#a00';
 
@@ -130,6 +134,11 @@ const _Col = ({
             >
               {item === -1 ? '' : String(item)}
             </Text>
+            {typeof item === 'number' &&
+              item > 0 &&
+              eventDays?.includes(item) && (
+                <View style={[styles.eventDot, eventDotStyle]} />
+              )}
             {Array.isArray(markedDays) &&
               markedDays.map((markedDay, index) => {
                 return (
@@ -191,5 +200,12 @@ const styles = StyleSheet.create({
   dayName: {
     fontSize: 13,
     fontWeight: 'bold',
+  },
+  eventDot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    marginTop: 2,
+    backgroundColor: '#4285F4',
   },
 });

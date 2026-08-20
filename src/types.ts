@@ -1,7 +1,11 @@
 import type {ReactNode} from 'react';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import type {GoogleCalendarConfig} from './googleCalendar/types';
+import type {AgendaConfig, AgendaItem} from './agenda/types';
 
 export type CalendarType = 'hijiri' | 'gregorian';
+export type {GoogleCalendarConfig, CalendarEvent} from './googleCalendar/types';
+export type {AgendaConfig, AgendaItem} from './agenda/types';
 
 export type SelectedDateRange = {
   from: string;
@@ -36,4 +40,9 @@ export type HCalendarProps = {
   customWeekDays?: string[];
   dayContainerStyle?: StyleProp<ViewStyle>;
   colContainerStyle?: StyleProp<ViewStyle>;
+  googleCalendar?: GoogleCalendarConfig;
+  agenda?: boolean | AgendaConfig;
+  agendaItems?: AgendaItem[];
+  onReserve?: (item: AgendaItem) => void;
+  onAgendaDelete?: (id: string) => void;
 };

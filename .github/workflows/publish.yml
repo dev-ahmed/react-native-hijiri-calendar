@@ -1,6 +1,8 @@
 name: Publish
 
 on:
+  push:
+    branches: [master]
   release:
     types: [published]
   workflow_dispatch:
@@ -65,7 +67,19 @@ jobs:
           git push origin "v${VERSION}"
           gh release create "v${VERSION}" --title "v${VERSION}" --generate-notes
 
+      - name: Check if version is already published
+        id: version
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "react-native-hijiri-calendar@${VERSION}" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "v${VERSION} already on npm, skipping publish"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish
+        if: steps.version.outputs.published == 'false'
         run: pnpm publish -w --access public --no-git-checks --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

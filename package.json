@@ -84,6 +84,9 @@
     "access": "public"
   },
   "pnpm": {
+    "overrides": {
+      "postcss": "^8.5.23"
+    },
     "patchedDependencies": {
       "expo-modules-jsi@57.0.3": "patches/expo-modules-jsi@57.0.3.patch"
     }

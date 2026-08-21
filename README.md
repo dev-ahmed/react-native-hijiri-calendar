@@ -1,5 +1,9 @@
 # react-native-hijiri-calendar
 
+[![npm version](https://img.shields.io/npm/v/react-native-hijiri-calendar.svg)](https://www.npmjs.com/package/react-native-hijiri-calendar)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-hijiri-calendar.svg)](https://www.npmjs.com/package/react-native-hijiri-calendar)
+[![types](https://img.shields.io/npm/types/react-native-hijiri-calendar.svg)](https://www.npmjs.com/package/react-native-hijiri-calendar)
+
 React Native calendar for **Hijri (Umm al-Qura)** and **Gregorian** dates. Supports month navigation, day selection, and date-range highlighting. Optional Google Calendar sign-in and event sync. Written in TypeScript.
 
 ![HCalendar demo](./assets/demo.gif)
@@ -68,44 +72,51 @@ Google Calendar is off unless you pass `googleCalendar`. See [Google Calendar](#
 
 ### Date formats
 
-| Type      | Format used in `selectedDates` / `onDaySelect` |
-| --------- | ---------------------------------------------- |
-| Hijri     | `YYYY/M/D` (e.g. `1441/9/1`)                   |
-| Gregorian | `YYYY/M/D` (e.g. `2020/4/15`)                  |
+Input and output formats differ for Hijri — note the field order.
 
-`onDaySelect` receives `(date, marked)` where `date` is a string in the format above, and `marked` is `true` if the day falls inside a `selectedDates` range.
+| Type      | `selectedDates` input         | `onDaySelect` output          |
+| --------- | ----------------------------- | ----------------------------- |
+| Hijri     | `YYYY/M/D` (e.g. `1441/9/1`)  | `D/M/YYYY` (e.g. `1/9/1441`)  |
+| Gregorian | `YYYY/M/D` (e.g. `2020/4/15`) | `YYYY/M/D` (e.g. `2020/4/15`) |
 
-For Hijri day taps, the returned string is `D/M/YYYY` (day-first). Prefer parsing with the same calendar type you configured.
+`onDaySelect` receives `(date, marked)`, where `marked` is `true` if the day falls inside a `selectedDates` range.
+
+> **Hijri round-trips need reordering.** A date string from `onDaySelect` is day-first, so feeding it straight back into `selectedDates` (which expects year-first) will resolve to the wrong day. Flip the parts first:
+>
+> ```js
+> const [day, month, year] = hijriDate.split('/');
+> const forSelectedDates = `${year}/${month}/${day}`;
+> ```
 
 ## Props
 
-| Prop                   | Type       | Default     | Description                                    |
-| ---------------------- | ---------- | ----------- | ---------------------------------------------- |
-| `calendarType`         | `string`   | `'hijiri'`  | `'hijiri'` or `'gregorian'`                    |
-| `selectedDates`        | `array`    | `undefined` | Ranges to highlight: `{ from, to, style }`     |
-| `onDaySelect`          | `function` | —           | `(date, marked) => void`                       |
-| `onPrev`               | `function` | —           | Called when navigating to the previous month   |
-| `onNext`               | `function` | —           | Called when navigating to the next month       |
-| `iconPrev`             | `element`  | —           | Custom previous-month icon                     |
-| `iconNext`             | `element`  | —           | Custom next-month icon                         |
-| `customHMonths`        | `array`    | short names | Override Hijri month labels (12 strings)       |
-| `customGMonths`        | `array`    | short names | Override Gregorian month labels (12 strings)   |
-| `customWeekDays`       | `array`    | locale min  | Override weekday labels (7 strings)            |
-| `containerStyle`       | `style`    | `{}`        | Outer calendar container                       |
-| `headerStyle`          | `style`    | `{}`        | Header bar                                     |
-| `headerFontStyle`      | `style`    | `{}`        | Header month/year text                         |
-| `fontStyle`            | `style`    | `{}`        | Day number text                                |
-| `weekDaysStyle`        | `style`    | `{}`        | Weekday row                                    |
-| `dayNameFontStyle`     | `style`    | `{}`        | Weekday label text                             |
-| `currentDayStyle`      | `style`    | `{}`        | Today’s day text                               |
-| `markedDatesTextStyle` | `style`    | `{}`        | Text style for days inside a marked range      |
-| `dayContainerStyle`    | `style`    | `{}`        | Individual day cell                            |
-| `colContainerStyle`    | `style`    | `{}`        | Row / column container                         |
-| `agenda`               | `boolean` or `object` | `undefined` | Optional day agenda with time slots     |
-| `agendaItems`          | `array`    | `undefined` | Controlled reserved slots                      |
-| `onReserve`            | `function` | —           | Called when a time slot is reserved            |
-| `onAgendaDelete`       | `function` | —           | Called when a reservation is removed           |
-| `googleCalendar`       | `object`   | `undefined` | Optional Google Calendar sync (off by default) |
+| Prop                   | Type                  | Default     | Description                                    |
+| ---------------------- | --------------------- | ----------- | ---------------------------------------------- |
+| `calendarType`         | `string`              | `'hijiri'`  | `'hijiri'` or `'gregorian'`                    |
+| `selectedDates`        | `array`               | `undefined` | Ranges to highlight: `{ from, to, style }`     |
+| `onDaySelect`          | `function`            | —           | `(date, marked) => void`                       |
+| `onPrev`               | `function`            | —           | Called when navigating to the previous month   |
+| `onNext`               | `function`            | —           | Called when navigating to the next month       |
+| `iconPrev`             | `element`             | —           | Custom previous-month icon                     |
+| `iconNext`             | `element`             | —           | Custom next-month icon                         |
+| `customHMonths`        | `array`               | short names | Override Hijri month labels (12 strings)       |
+| `customGMonths`        | `array`               | short names | Override Gregorian month labels (12 strings)   |
+| `customWeekDays`       | `array`               | locale min  | Override weekday labels (7 strings)            |
+| `containerStyle`       | `style`               | `{}`        | Outer calendar container                       |
+| `headerStyle`          | `style`               | `{}`        | Header bar                                     |
+| `headerFontStyle`      | `style`               | `{}`        | Header month/year text                         |
+| `fontStyle`            | `style`               | `{}`        | Day number text                                |
+| `weekDaysStyle`        | `style`               | `{}`        | Weekday row                                    |
+| `dayNameFontStyle`     | `style`               | `{}`        | Weekday label text                             |
+| `currentDayStyle`      | `style`               | `{}`        | Today’s day text                               |
+| `markedDatesTextStyle` | `style`               | `{}`        | Text style for days inside a marked range      |
+| `dayContainerStyle`    | `style`               | `{}`        | Individual day cell                            |
+| `colContainerStyle`    | `style`               | `{}`        | Row / column container                         |
+| `agenda`               | `boolean` or `object` | `undefined` | Optional day agenda with time slots            |
+| `agendaItems`          | `array`               | `undefined` | Controlled reserved slots                      |
+| `onReserve`            | `function`            | —           | Called when a time slot is reserved            |
+| `onAgendaDelete`       | `function`            | —           | Called when a reservation is removed           |
+| `googleCalendar`       | `object`              | `undefined` | Optional Google Calendar sync (off by default) |
 
 ### `selectedDates` item shape
 
@@ -198,6 +209,26 @@ Omit `googleCalendar` to keep the calendar local.
 ```
 
 `useGoogleCalendar` and `useGoogleCalendarAuth` are also exported if you want to build your own event UI.
+
+## Exports
+
+```ts
+import {
+  HCalendar,
+  useGoogleCalendar,
+  useGoogleCalendarAuth,
+} from 'react-native-hijiri-calendar';
+
+import type {
+  HCalendarProps,
+  CalendarType,
+  SelectedDateRange,
+  CalendarEvent,
+  GoogleCalendarConfig,
+  AgendaConfig,
+  AgendaItem,
+} from 'react-native-hijiri-calendar';
+```
 
 ## Contributing
 

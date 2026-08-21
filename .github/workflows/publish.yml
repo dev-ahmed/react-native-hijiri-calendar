@@ -67,14 +67,6 @@ jobs:
           git push origin "v${VERSION}"
           gh release create "v${VERSION}" --title "v${VERSION}" --generate-notes
 
-      - name: Whoami
-        run: |
-          npm whoami
-          npm profile get 2>&1 || true
-          npm access list packages 2>&1 || true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Check if version is already published
         id: version
         run: |
@@ -88,6 +80,6 @@ jobs:
 
       - name: Publish
         if: steps.version.outputs.published == 'false'
-        run: pnpm publish --access public --no-git-checks --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm install -g npm@latest
+          npm publish --access public --provenance

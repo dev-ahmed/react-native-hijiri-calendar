@@ -90,33 +90,50 @@ Input and output formats differ for Hijri — note the field order.
 
 ## Props
 
-| Prop                   | Type                  | Default     | Description                                    |
-| ---------------------- | --------------------- | ----------- | ---------------------------------------------- |
-| `calendarType`         | `string`              | `'hijiri'`  | `'hijiri'` or `'gregorian'`                    |
-| `selectedDates`        | `array`               | `undefined` | Ranges to highlight: `{ from, to, style }`     |
-| `onDaySelect`          | `function`            | —           | `(date, marked) => void`                       |
-| `onPrev`               | `function`            | —           | Called when navigating to the previous month   |
-| `onNext`               | `function`            | —           | Called when navigating to the next month       |
-| `iconPrev`             | `element`             | —           | Custom previous-month icon                     |
-| `iconNext`             | `element`             | —           | Custom next-month icon                         |
-| `customHMonths`        | `array`               | short names | Override Hijri month labels (12 strings)       |
-| `customGMonths`        | `array`               | short names | Override Gregorian month labels (12 strings)   |
-| `customWeekDays`       | `array`               | locale min  | Override weekday labels (7 strings)            |
-| `containerStyle`       | `style`               | `{}`        | Outer calendar container                       |
-| `headerStyle`          | `style`               | `{}`        | Header bar                                     |
-| `headerFontStyle`      | `style`               | `{}`        | Header month/year text                         |
-| `fontStyle`            | `style`               | `{}`        | Day number text                                |
-| `weekDaysStyle`        | `style`               | `{}`        | Weekday row                                    |
-| `dayNameFontStyle`     | `style`               | `{}`        | Weekday label text                             |
-| `currentDayStyle`      | `style`               | `{}`        | Today’s day text                               |
-| `markedDatesTextStyle` | `style`               | `{}`        | Text style for days inside a marked range      |
-| `dayContainerStyle`    | `style`               | `{}`        | Individual day cell                            |
-| `colContainerStyle`    | `style`               | `{}`        | Row / column container                         |
-| `agenda`               | `boolean` or `object` | `undefined` | Optional day agenda with time slots            |
-| `agendaItems`          | `array`               | `undefined` | Controlled reserved slots                      |
-| `onReserve`            | `function`            | —           | Called when a time slot is reserved            |
-| `onAgendaDelete`       | `function`            | —           | Called when a reservation is removed           |
-| `googleCalendar`       | `object`              | `undefined` | Optional Google Calendar sync (off by default) |
+### Dates and selection
+
+| Prop            | Type       | Default     | Description                                  |
+| --------------- | ---------- | ----------- | -------------------------------------------- |
+| `calendarType`  | `string`   | `'hijiri'`  | `'hijiri'` or `'gregorian'`                  |
+| `selectedDates` | `array`    | `undefined` | Ranges to highlight: `{ from, to, style }`   |
+| `onDaySelect`   | `function` | —           | `(date, marked) => void`                     |
+| `onPrev`        | `function` | —           | Called when navigating to the previous month |
+| `onNext`        | `function` | —           | Called when navigating to the next month     |
+
+### Labels and icons
+
+| Prop             | Type      | Default     | Description                                  |
+| ---------------- | --------- | ----------- | -------------------------------------------- |
+| `iconPrev`       | `element` | —           | Custom previous-month icon                   |
+| `iconNext`       | `element` | —           | Custom next-month icon                       |
+| `customHMonths`  | `array`   | short names | Override Hijri month labels (12 strings)     |
+| `customGMonths`  | `array`   | short names | Override Gregorian month labels (12 strings) |
+| `customWeekDays` | `array`   | locale min  | Override weekday labels (7 strings)          |
+
+### Styling
+
+| Prop                   | Type    | Default | Description                               |
+| ---------------------- | ------- | ------- | ----------------------------------------- |
+| `containerStyle`       | `style` | `{}`    | Outer calendar container                  |
+| `headerStyle`          | `style` | `{}`    | Header bar                                |
+| `headerFontStyle`      | `style` | `{}`    | Header month/year text                    |
+| `fontStyle`            | `style` | `{}`    | Day number text                           |
+| `weekDaysStyle`        | `style` | `{}`    | Weekday row                               |
+| `dayNameFontStyle`     | `style` | `{}`    | Weekday label text                        |
+| `currentDayStyle`      | `style` | `{}`    | Today’s day text                          |
+| `markedDatesTextStyle` | `style` | `{}`    | Text style for days inside a marked range |
+| `dayContainerStyle`    | `style` | `{}`    | Individual day cell                       |
+| `colContainerStyle`    | `style` | `{}`    | Row / column container                    |
+
+### Agenda and Google Calendar
+
+| Prop             | Type                  | Default     | Description                                    |
+| ---------------- | --------------------- | ----------- | ---------------------------------------------- |
+| `agenda`         | `boolean` or `object` | `undefined` | Optional day agenda with time slots            |
+| `agendaItems`    | `array`               | `undefined` | Controlled reserved slots                      |
+| `onReserve`      | `function`            | —           | Called when a time slot is reserved            |
+| `onAgendaDelete` | `function`            | —           | Called when a reservation is removed           |
+| `googleCalendar` | `object`              | `undefined` | Optional Google Calendar sync (off by default) |
 
 ### `selectedDates` item shape
 
